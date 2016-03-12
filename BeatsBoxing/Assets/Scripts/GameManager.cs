@@ -25,4 +25,10 @@ public class GameManager : MonoBehaviour {
             player.Lane--;
         }
     }
+
+
+	public void Attack() {
+		//SOMEBODY: Can't call DoAttackPattern!
+		//player.DoAttackPattern ();
+	}
 }

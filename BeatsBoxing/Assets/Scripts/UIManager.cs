@@ -7,10 +7,14 @@ public class UIManager : MonoBehaviour
 {
     GameManager gameManager;
     public GameObject gmObj;
-    public GameObject ComboMeter, Health;
-    Text ComboText, HealthText;
+    public GameObject ComboMeter, Health, Mobile;
+    Text ComboText, HealthText, MobileText;
     Dictionary<GameObject, Text> textDict;
     
+	float touchTime;
+	Vector2 touchDelta;
+
+
     // Use this for initialization
     void Start()
     {
@@ -20,10 +24,12 @@ public class UIManager : MonoBehaviour
         }
         ComboText = ComboMeter.GetComponent<Text>();
         HealthText = Health.GetComponent<Text>();
+		MobileText = Mobile.GetComponent<Text> ();
 
         textDict = new Dictionary<GameObject, Text>();
         textDict.Add(Health, HealthText);
         textDict.Add(ComboMeter, ComboText);
+		textDict.Add(Mobile, MobileText);
        
     }
 
@@ -37,28 +43,39 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchSupported)
-        {
+
             ManageTouches();
 
-        }
     }
 
     void ManageTouches()
-    {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector2 touchDeltaPosition = touch.deltaPosition;
-            float touchDeltaTime = touch.deltaTime;
-            Debug.Log("deltaPos: " + touchDeltaPosition);
-            Debug.Log("dt: " + touchDeltaTime);
-            Debug.Log("deltaPos / dt: " + touchDeltaPosition.magnitude / touchDeltaTime);
-            if (touchDeltaPosition.magnitude / touchDeltaTime > 0.5 && touchDeltaPosition.y > 0)
-            {
-                Debug.Log("SWIPER SWIPED SWIPE SWIPE SWIPE");
-            }
+	{
 
-        }
-    }
+		if (Input.touchCount > 0) {
+			Touch currentTouch = Input.GetTouch (0);
+			if (currentTouch.phase == TouchPhase.Began) {
+				touchDelta = new Vector2 (0.0f, 0.0f);
+				touchTime = 0.0f;
+				if (currentTouch.position.x > Screen.width / 2) {
+					Debug.Log ("Attack!");
+					gameManager.Attack ();
+				}
+			} else if (currentTouch.phase == TouchPhase.Moved) {
+				touchDelta = currentTouch.deltaPosition;
+				touchTime += currentTouch.deltaTime;
+				SetText (Mobile, "deltaPos: " + touchDelta + "\ndt: " + touchTime + "\ndeltaPos / dt: " + touchDelta.magnitude / touchTime);
+
+			} else if (currentTouch.phase == TouchPhase.Ended) {
+				if (touchDelta.magnitude / touchTime > 0.5) {
+					Debug.Log ("SWIPER SWIPED SWIPE SWIPE SWIPE");
+					if (touchDelta.y > 0) {
+						gameManager.player.Lane++;
+					} else if (touchDelta.y < 0) {
+						gameManager.player.Lane--;	
+					}
+
+				}
+			}
+		}
+	}
 }
