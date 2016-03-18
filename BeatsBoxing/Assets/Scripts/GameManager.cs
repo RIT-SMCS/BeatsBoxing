@@ -8,12 +8,12 @@ public class GameManager : MonoBehaviour
 {
 
     public Player player;
-    public EnemyManager eManager;
+    public EnemyManager eManager; 
 
     // Use this for initialization
     void Start()
     {
-
+        InvokeRepeating("SpawnEnemies", 2.0f, 2.0f);
     }
 
     // Update is called once per frame
@@ -30,15 +30,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnEnemies();
-        }
+        }        
     }
 
     void SpawnEnemies()
     {
-        if(eManager.Enemies.Count < eManager.maxEnemies)
-        {
-            eManager.MakeEnemy((int)Random.Range(0.0f,5.0f));
-            Debug.Log(eManager.Enemies.Count + " in game.");            
-        }
+        eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f,6.0f)));
+        Debug.Log(eManager.Enemies.Count + " in game.");       
     }
 }

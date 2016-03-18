@@ -6,7 +6,8 @@ public class EnemyManager : MonoBehaviour {
 
     public int maxEnemies;
     public GameObject enemyToSpawn;
-    List<GameObject> enemies;    
+    List<GameObject> enemies;
+    public GameObject player;    
 
     public List<GameObject> Enemies
     {
@@ -22,7 +23,7 @@ public class EnemyManager : MonoBehaviour {
 	void Update () {
         List<GameObject> toRemove = new List<GameObject>();
 	    foreach(GameObject e in enemies)
-        {
+        {            
             if(e.transform.position.x <= -3.0f)
             {
                 toRemove.Add(e);                
@@ -38,10 +39,11 @@ public class EnemyManager : MonoBehaviour {
     //Instantiate an Enemy and add it to list
     public void MakeEnemy(int laneNum)
     {
-        GameObject temp = Instantiate(enemyToSpawn);        
-        temp.GetComponent<Enemy>().Lane = laneNum;
+        GameObject temp = Instantiate(enemyToSpawn);
         temp.transform.position = new Vector3(temp.GetComponent<Enemy>().StartX, 0.0f, 0.0f);
+        temp.GetComponent<Enemy>().Lane = laneNum;       
         enemies.Add(temp);
+        Debug.Log("Made enemy in lane: " + temp.GetComponent<Enemy>().Lane);
     }
     
     //remove Enemy from List and destroy it

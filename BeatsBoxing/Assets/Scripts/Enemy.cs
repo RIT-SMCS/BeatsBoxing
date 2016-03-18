@@ -4,8 +4,7 @@ using System.Collections;
 public class Enemy : LineActor {
 
     [SerializeField]
-    private float startX;
-    private bool hasCollided;
+    private float startX;    
 
     public float StartX
     {
@@ -19,8 +18,7 @@ public class Enemy : LineActor {
         _xVelocity = -1.0f;
         _currentLane = 0;
         Lane = _currentLane;
-        startX = 3.0f;
-        hasCollided = false;
+        startX = 3.0f;       
 	}
 	
 	// Update is called once per frame
@@ -34,14 +32,10 @@ public class Enemy : LineActor {
     }
 
     public void OnCollisionEnter2D(Collision2D col)
-    {
+    {        
         if (col.gameObject.tag == "Player")
-        {
-            if (!hasCollided)
-            {
-                col.gameObject.GetComponent<Player>().TakeDamage(1);
-                hasCollided = true;
-            }
+        {           
+            col.gameObject.GetComponent<Player>().TakeDamage(1);                       
         }
     }    
 }

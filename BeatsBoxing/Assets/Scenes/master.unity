@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnemies: 3
   enemyToSpawn: {fileID: 188800, guid: 07a47490b4024d44082ca28029c34de3, type: 2}
+  player: {fileID: 1669351122}
 --- !u!4 &1373826393
 Transform:
   m_ObjectHideFlags: 0
@@ -264,6 +265,7 @@ GameObject:
   - 58: {fileID: 1669351125}
   - 212: {fileID: 1669351124}
   - 114: {fileID: 1669351123}
+  - 50: {fileID: 1669351127}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -335,3 +337,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!50 &1669351127
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669351122}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
