@@ -4,6 +4,8 @@ using System.Collections;
 //[RequireComponent(typeof (GameManager))]
 public static class ScoreManager {
 
+    private static float speedScale = 1.0f;
+
     private static float score = 0.0f;
     private static float multiplier = 0.0f;
     private static int combo = 0;
@@ -47,6 +49,17 @@ public static class ScoreManager {
             combo = value;
             //score multipler based on Combo
             multiplier = 1.0f + ((combo / 10) * 0.1f);
+        }
+    }
+    /// <summary>
+    /// Returns the current acceleration based on the current score
+    /// </summary>
+    public static float SpeedScale
+    {
+        get
+        {
+            speedScale = 1.0f + 0.10f*(score / 1000f);
+            return speedScale;
         }
     }
 
