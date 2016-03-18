@@ -2,12 +2,16 @@
 using System.Collections;
 using System;
 
-public class Player : LineActor
+public class Player : LaneActor
 {
     void Awake()
     {
-        XVelocity = 0.0f;
+        XVelocity = -1.0f;
 
+    }
+
+    void Update()
+    {
     }
 
     protected override void DoAttackPattern()
