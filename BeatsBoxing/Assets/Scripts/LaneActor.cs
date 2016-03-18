@@ -2,9 +2,9 @@
 using System.Collections;
 
 [RequireComponent(typeof (SpriteRenderer), typeof (Collider2D))]
-public abstract class LineActor : MonoBehaviour {
+public abstract class LaneActor : MonoBehaviour {
     [SerializeField]
-    private const int MAX_LANES = 5;
+    public const int MAX_LANES = 5;
 
     protected int _health;
     protected int _currentLane;
@@ -26,7 +26,7 @@ public abstract class LineActor : MonoBehaviour {
         get { return _currentLane; }
         set { _currentLane = value;
             if (_currentLane < 0) { _currentLane = 0; }
-            else if (_currentLane > MAX_LANES) { _currentLane = MAX_LANES; }
+            else if (_currentLane >= MAX_LANES) { _currentLane = MAX_LANES-1; }
             //set the y value of the transform
             transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
         }
@@ -49,7 +49,7 @@ public abstract class LineActor : MonoBehaviour {
     void Awake () {
         _renderer = this.GetComponent<SpriteRenderer>();
         _xVelocity = 0.0f;
-        Lane = _currentLane;
+        Lane = -10;
 	}
 	
 	// Update is called once per frame
