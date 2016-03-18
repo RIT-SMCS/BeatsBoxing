@@ -7,7 +7,7 @@ public static class ScoreManager {
     private static float speedScale = 1.0f;
 
     private static float score = 0.0f;
-    private static float multiplier = 0.0f;
+    private static float multiplier = 1.0f;
     private static int combo = 0;
 
     /// <summary>
@@ -58,7 +58,7 @@ public static class ScoreManager {
     {
         get
         {
-            speedScale = 1.0f + 0.10f*(score / 1000f);
+            speedScale = 1.0f + 0.50f*(score / 100f);
             return speedScale;
         }
     }

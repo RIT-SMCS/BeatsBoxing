@@ -21,33 +21,22 @@ public class GameManager : MonoBehaviour {
             l.name = "lane " + i;
         }
 
-        ScoreManager.Combo = 0;
-        ScoreManager.Score += 10;
-        //ScoreManager.Combo = 50;
-        ScoreManager.Score += 10;
-        ScoreManager.Combo = 100;
-        ScoreManager.Score += 10;
-        
-
-        Debug.Log(ScoreManager.Score);
-        ScoreManager.Score = 100;
-        Debug.Log(ScoreManager.Score);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            _player.Lane++;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _player.Lane--;
-        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnEnemies();
-        }        
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ScoreManager.Combo += 10;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ScoreManager.AddScoreWithMultiplier(10);
+        }
     }
 
     void SpawnEnemies()

@@ -53,7 +53,7 @@ public abstract class LaneActor : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
         this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
 	}
 

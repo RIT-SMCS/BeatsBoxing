@@ -45,6 +45,10 @@ public class UIManager : MonoBehaviour
     {
 
             ManageTouches();
+        HealthText.text = "HP: "+gameManager._player.Health;
+        ComboText.text = "Score: " + ScoreManager.Score 
+            + "\nCombo x" + ScoreManager.Combo
+            + "\nmult x" + ScoreManager.Multiplier;
 
     }
 
@@ -69,9 +73,9 @@ public class UIManager : MonoBehaviour
 				if (touchDelta.magnitude / touchTime > 0.5) {
 					Debug.Log ("SWIPER SWIPED SWIPE SWIPE SWIPE");
 					if (touchDelta.y > 0) {
-						gameManager.player.Lane++;
+						gameManager._player.Lane++;
 					} else if (touchDelta.y < 0) {
-						gameManager.player.Lane--;	
+						gameManager._player.Lane--;	
 					}
 
 				}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : LineActor {
+public class Enemy : LaneActor {
 
     [SerializeField]
     private float startX;    
@@ -22,8 +22,9 @@ public class Enemy : LineActor {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+	public override void Update () {
+        //this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+        base.Update();
     }  
 
     protected override void DoAttackPattern()

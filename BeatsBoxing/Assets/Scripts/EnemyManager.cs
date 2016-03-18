@@ -34,6 +34,11 @@ public class EnemyManager : MonoBehaviour {
             RemoveEnemy(e);
             Debug.Log("Destroyed");
         }
+
+        foreach (GameObject e in enemies)
+        {
+            e.GetComponent<Enemy>().XVelocity = -1.0f - (ScoreManager.SpeedScale - 1.0f);
+        }
     }
 
     //Instantiate an Enemy and add it to list
@@ -41,7 +46,8 @@ public class EnemyManager : MonoBehaviour {
     {
         GameObject temp = Instantiate(enemyToSpawn);
         temp.transform.position = new Vector3(temp.GetComponent<Enemy>().StartX, 0.0f, 0.0f);
-        temp.GetComponent<Enemy>().Lane = laneNum;       
+        temp.GetComponent<Enemy>().Lane = laneNum;
+        temp.transform.parent = this.transform;
         enemies.Add(temp);
         Debug.Log("Made enemy in lane: " + temp.GetComponent<Enemy>().Lane);
     }
