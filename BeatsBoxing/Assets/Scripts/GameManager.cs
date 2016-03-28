@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour {
 
     public Lane LanePrefab;
     public Player _player;
-	public EnemyManager eManager; 
+	public EnemyManager eManager;
+
+    [SerializeField] private float startDelay;
+    [SerializeField] private float spawnRate;
 
 	// Use this for initialization
 	void Awake () {
-		InvokeRepeating("SpawnEnemies", 2.0f, 2.0f);
+		InvokeRepeating("SpawnEnemies", startDelay, spawnRate);
 		
         for (int i = 0; i < LaneActor.MAX_LANES; ++i)
         {
@@ -41,8 +44,7 @@ public class GameManager : MonoBehaviour {
 
     void SpawnEnemies()
     {
-        eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f,6.0f)));
-        Debug.Log(eManager.Enemies.Count + " in game.");       
+        eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f,6.0f)));      
     }
 
 

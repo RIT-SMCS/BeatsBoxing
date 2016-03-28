@@ -31,8 +31,7 @@ public class EnemyManager : MonoBehaviour {
         }        
         foreach (GameObject e in toRemove)
         {
-            RemoveEnemy(e);
-            Debug.Log("Destroyed");
+            RemoveEnemy(e);            
         }
 
         foreach (GameObject e in enemies)
@@ -48,8 +47,7 @@ public class EnemyManager : MonoBehaviour {
         temp.transform.position = new Vector3(temp.GetComponent<Enemy>().StartX, 0.0f, 0.0f);
         temp.GetComponent<Enemy>().Lane = laneNum;
         temp.transform.parent = this.transform;
-        enemies.Add(temp);
-        Debug.Log("Made enemy in lane: " + temp.GetComponent<Enemy>().Lane);
+        enemies.Add(temp);        
     }
     
     //remove Enemy from List and destroy it
