@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
 				SetText (Mobile, "dt: " + touchTime + "\tdeltaPos / dt: " + touchDelta.magnitude / touchTime);
 
 			} else if (currentTouch.phase == TouchPhase.Ended) {
-				if (touchDelta.magnitude / touchTime > 0.5) {
+				if (touchDelta.magnitude / touchTime > 350.0 && touchTime < 1.5) {
 					if (touchDelta.y > 0) {
 						gameManager._player.Lane++;
 					} else if (touchDelta.y < 0) {
