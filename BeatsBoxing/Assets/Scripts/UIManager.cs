@@ -7,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     GameManager gameManager;
     public GameObject gmObj;
-    public GameObject ComboMeter, Health, Mobile;
-    Text ComboText, HealthText, MobileText;
+    [SerializeField] GameObject ComboMeter, Health, Mobile, Mult, Score;
+    Text ComboText, HealthText, MobileText, MultText, ScoreText;
     Dictionary<GameObject, Text> textDict;
     
 	float touchTime;
@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
         ComboText = ComboMeter.GetComponent<Text>();
         HealthText = Health.GetComponent<Text>();
 		MobileText = Mobile.GetComponent<Text> ();
+        MultText = Mult.GetComponent<Text>();
+        ScoreText = Score.GetComponent<Text>();
 
         textDict = new Dictionary<GameObject, Text>();
         textDict.Add(Health, HealthText);
@@ -44,11 +46,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
 
-            ManageTouches();
-        HealthText.text = "HP: "+gameManager._player.Health;
-        ComboText.text = "Score: " + ScoreManager.Score 
-            + "\nCombo x" + ScoreManager.Combo
-            + "\nmult x" + ScoreManager.Multiplier;
+        ManageTouches();
+        HealthText.text = "HP: "+ gameManager._player.Health;
+        ScoreText.text = "Score: " + ScoreManager.Score;
+        ComboText.text = "Combo x" + ScoreManager.Combo;
+        MultText.text =  "Multiplier x" + ScoreManager.Multiplier;
 
     }
 
@@ -66,10 +68,10 @@ public class UIManager : MonoBehaviour
 			} else if (currentTouch.phase == TouchPhase.Moved) {
 				touchDelta = currentTouch.deltaPosition;
 				touchTime += currentTouch.deltaTime;
-				SetText (Mobile, "dt: " + touchTime + "\tdeltaPos / dt: " + touchDelta.magnitude / touchTime);
+				SetText (Mobile, "dt: " + touchTime + "\ndeltaPos / dt: " + touchDelta.magnitude / touchTime);
 
 			} else if (currentTouch.phase == TouchPhase.Ended) {
-				if (touchDelta.magnitude / touchTime > 350.0 && touchTime < 1.5) {
+				if (touchDelta.magnitude / touchTime > 0.5) {
 					if (touchDelta.y > 0) {
 						gameManager._player.Lane++;
 					} else if (touchDelta.y < 0) {
