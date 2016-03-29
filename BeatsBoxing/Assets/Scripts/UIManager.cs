@@ -61,17 +61,15 @@ public class UIManager : MonoBehaviour
 				touchDelta = new Vector2 (0.0f, 0.0f);
 				touchTime = 0.0f;
 				if (currentTouch.position.x > Screen.width / 2) {
-					Debug.Log ("Attack!");
 					gameManager.Attack ();
 				}
 			} else if (currentTouch.phase == TouchPhase.Moved) {
 				touchDelta = currentTouch.deltaPosition;
 				touchTime += currentTouch.deltaTime;
-				SetText (Mobile, "deltaPos: " + touchDelta + "\ndt: " + touchTime + "\ndeltaPos / dt: " + touchDelta.magnitude / touchTime);
+				SetText (Mobile, "dt: " + touchTime + "\tdeltaPos / dt: " + touchDelta.magnitude / touchTime);
 
 			} else if (currentTouch.phase == TouchPhase.Ended) {
 				if (touchDelta.magnitude / touchTime > 0.5) {
-					Debug.Log ("SWIPER SWIPED SWIPE SWIPE SWIPE");
 					if (touchDelta.y > 0) {
 						gameManager._player.Lane++;
 					} else if (touchDelta.y < 0) {

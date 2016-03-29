@@ -8,6 +8,7 @@ public class Player : LaneActor
     {
         XVelocity = -1.0f;
         Health = 5;
+        Lane = 5;
     }
 
     public override void Update()
@@ -19,6 +20,10 @@ public class Player : LaneActor
         if (Input.GetKeyDown(KeyCode.S))
         {
             Lane--;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DoAttackPattern();
         }
     }
 
