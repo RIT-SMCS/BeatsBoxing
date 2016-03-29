@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour {
 
         foreach (GameObject e in enemies)
         {
-            e.GetComponent<Enemy>().XVelocity = -1.0f - (ScoreManager.SpeedScale - 1.0f);
+            e.GetComponent<Enemy>().XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
         }
     }
 

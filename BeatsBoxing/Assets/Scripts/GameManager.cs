@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		InvokeRepeating("SpawnEnemies", startDelay, spawnRate);
+		InvokeRepeating("SpawnEnemies", startDelay, spawnRate / ScoreManager.SpeedScale);
 		
         for (int i = 0; i < LaneActor.MAX_LANES; ++i)
         {

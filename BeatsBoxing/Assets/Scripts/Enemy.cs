@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : LaneActor {
+public abstract class Enemy : LaneActor {
+
+    protected enum State { Attacking, Tracking};
 
     [SerializeField]
-    private float startX;    
+    protected float startX;
+    protected State currentState;
 
     public float StartX
     {
@@ -14,11 +17,7 @@ public class Enemy : LaneActor {
 
 	// Use this for initialization
 	void Awake () {
-        _health = 1;
-        _xVelocity = -1.0f;
-        _currentLane = 0;
-        Lane = _currentLane;
-        startX = 3.0f;       
+           
 	}
 	
 	// Update is called once per frame
