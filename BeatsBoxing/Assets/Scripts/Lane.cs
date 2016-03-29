@@ -2,17 +2,20 @@
 using System.Collections;
 using System;
 
+[ExecuteInEditMode]
 public class Lane : MonoBehaviour {
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
+    public bool IsParent = true;
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x < 0.0f)
+        float xVel = -1.0f - (ScoreManager.SpeedScale - 1.0f);
+        if (IsParent)
         {
-            transform.position = new Vector3(Screen.width, transform.position.y, transform.position.z);
+            transform.position += new Vector3(xVel, 0.0f, 0.0f) * Time.deltaTime;
+        }
+        if (transform.position.x < -Camera.main.orthographicSize)
+        {
+            //transform.position = new Vector3(Screen.width, transform.position.y, transform.position.z);
+            transform.Translate(Camera.main.orthographicSize * 2.0f, 0.0f, 0.0f);
         }
     }
 }
