@@ -9,7 +9,7 @@ public class Enemy : LaneActor {
     public float StartX
     {
         get { return startX; }
-        set { startX = value; }
+		set { startX = value;}
     }
 
 	// Use this for initialization
@@ -18,7 +18,7 @@ public class Enemy : LaneActor {
         _xVelocity = -1.0f;
         _currentLane = 0;
         Lane = _currentLane;
-        startX = 3.0f;       
+        startX = 3.0f;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +27,7 @@ public class Enemy : LaneActor {
         base.Update();
     }  
 
-    protected override void DoAttackPattern()
+    public override void DoAttackPattern()
     {
 
     }
@@ -38,5 +38,13 @@ public class Enemy : LaneActor {
         {           
             col.gameObject.GetComponent<Player>().TakeDamage(1);                       
         }
-    }    
+    }
+
+	public void TakeDamage(int damage)
+	{
+		this.Health -= damage;        
+		ScoreManager.Combo += 1;
+		Debug.Log ("Damaged"); 
+		Debug.Log (this.Health); 
+	}
 }
