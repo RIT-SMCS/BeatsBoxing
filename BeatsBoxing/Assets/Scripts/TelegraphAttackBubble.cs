@@ -20,7 +20,6 @@ public class TelegraphAttackBubble : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         age += Time.deltaTime;
-        Debug.Log(Time.deltaTime);
         float t = Mathf.Min(age, duration) / duration;
         renderer.color = Color.Lerp(startColor, endColor, t);
         transform.localScale = Vector3.Lerp(startScale, endScale, t);
