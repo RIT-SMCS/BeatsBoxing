@@ -7,6 +7,7 @@ public class BackgroundScroll : MonoBehaviour {
 
     private float tileSizeX;
     private Vector3 startPosition;
+    private float deltaX;
 
     static int ID = 0;
 	// Use this for initialization
@@ -18,7 +19,9 @@ public class BackgroundScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float newPosition = Mathf.Repeat(Time.time * ScrollSpeed * ScoreManager.SpeedScale, tileSizeX);
-        transform.position = startPosition + Vector3.left * newPosition;
+        deltaX = ScrollSpeed * ScoreManager.SpeedScale * Time.deltaTime;
+        float delPosition = Mathf.Repeat((startPosition.x - transform.position.x) + deltaX, tileSizeX);
+        transform.position = startPosition + Vector3.left * delPosition;
+        Debug.Log(delPosition + " - " + tileSizeX);
 	}
 }
