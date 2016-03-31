@@ -16,8 +16,8 @@ public abstract class Enemy : LaneActor {
     }
 
 	// Use this for initialization
-	void Awake () {
-           
+	public virtual void Awake () {
+        StartCoroutine(PrepForAttack(2));
 	}
 	
 	// Update is called once per frame
@@ -28,7 +28,14 @@ public abstract class Enemy : LaneActor {
 
     protected override void DoAttackPattern()
     {
+        Debug.Log("Attacked!");
+    }
 
+    protected IEnumerator PrepForAttack(float duration)
+    {
+        SetBubble(duration);
+        yield return new WaitForSeconds(duration);
+        DoAttackPattern();
     }
 
     public void OnCollisionEnter2D(Collision2D col)
@@ -37,5 +44,13 @@ public abstract class Enemy : LaneActor {
         {           
             col.gameObject.GetComponent<Player>().TakeDamage(1);                       
         }
-    }    
+    } 
+    
+    public void SetBubble(float duration)
+    {
+        //GameObject temp = Instantiate(null);
+        //temp.transform.parent = transform;
+        //temp.transform.localPosition = new Vector3(0, 0, 1);
+        //temp.GetComponent<TelegraphAttackBubble>().duration = duration;
+    }   
 }

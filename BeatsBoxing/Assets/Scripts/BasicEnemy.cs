@@ -4,7 +4,8 @@ using System.Collections;
 public class BasicEnemy : Enemy {
 
 	// Use this for initialization
-	void Awake() {
+    public override void Awake() {
+        base.Awake();
         _health = 1;
         _xVelocity = -1.0f;
         _currentLane = 0;
@@ -20,6 +21,6 @@ public class BasicEnemy : Enemy {
 
     protected override void DoAttackPattern()
     {
-
-    }
+        base.DoAttackPattern();
+    }    
 }
