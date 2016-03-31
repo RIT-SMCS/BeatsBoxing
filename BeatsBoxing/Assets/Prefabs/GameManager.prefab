@@ -40,8 +40,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LanePrefab: {fileID: 11451402, guid: 159f8cd9ef03ae64a99ef7c2fba5bb10, type: 2}
+  LaneBarrierPrefab: {fileID: 161762, guid: 07a58a730ca9a6f4e804570f68625f0f, type: 2}
   _player: {fileID: 0}
   eManager: {fileID: 0}
+  TelegraphPrefab: {fileID: 105710, guid: 1145a88a08a302f4fb4e285c83c89769, type: 2}
+  startDelay: 2
+  spawnRate: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
