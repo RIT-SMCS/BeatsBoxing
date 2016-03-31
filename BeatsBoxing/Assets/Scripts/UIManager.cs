@@ -47,7 +47,14 @@ public class UIManager : MonoBehaviour
     {
 
         ManageTouches();
-        HealthText.text = "HP: "+ gameManager._player.Health;
+        string curhealth = "";
+        for(int i = 0; i < 5; i++)
+        {
+            if (gameManager._player.Health >= i)
+                curhealth += " ";
+            else curhealth += " ";
+        }
+        HealthText.text = curhealth;
         ScoreText.text = "Score: " + ScoreManager.Score;
         ComboText.text = "Combo x" + ScoreManager.Combo;
         MultText.text =  "Multiplier x" + ScoreManager.Multiplier;
