@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public Lane LanePrefab;
     public Player _player;
 	public EnemyManager eManager;
+    public GameObject TelegraphPrefab;
 
     [SerializeField] private float startDelay;
     [SerializeField] private float spawnRate;

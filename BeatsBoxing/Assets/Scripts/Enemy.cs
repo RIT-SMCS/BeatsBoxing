@@ -48,9 +48,9 @@ public abstract class Enemy : LaneActor {
     
     public void SetBubble(float duration)
     {
-        //GameObject temp = Instantiate(null);
-        //temp.transform.parent = transform;
-        //temp.transform.localPosition = new Vector3(0, 0, 1);
-        //temp.GetComponent<TelegraphAttackBubble>().duration = duration;
+        GameObject temp = Instantiate(Resources.Load("Telegraph")) as GameObject;
+        temp.transform.parent = transform;
+        temp.transform.localPosition = new Vector3(0, 0, 1);
+        temp.GetComponent<TelegraphAttackBubble>().duration = duration;
     }   
 }

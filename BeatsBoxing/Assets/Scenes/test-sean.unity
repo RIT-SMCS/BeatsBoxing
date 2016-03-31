@@ -850,6 +850,14 @@ Prefab:
       propertyPath: TelegraphPrefab
       value: 
       objectReference: {fileID: 105710, guid: 1145a88a08a302f4fb4e285c83c89769, type: 2}
+    - target: {fileID: 11484386, guid: e278a177319535049a0967f01c9e4ba6, type: 2}
+      propertyPath: startDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484386, guid: e278a177319535049a0967f01c9e4ba6, type: 2}
+      propertyPath: spawnRate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e278a177319535049a0967f01c9e4ba6, type: 2}
   m_IsPrefabParent: 0
@@ -968,6 +976,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1669351122}
+    - target: {fileID: 11401854, guid: fb2bc9f72d7e8a0479ca29cceda73887, type: 2}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 136984, guid: 840556a4dfbd2c74b9d7e2e757349b4c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb2bc9f72d7e8a0479ca29cceda73887, type: 2}
   m_IsPrefabParent: 0
