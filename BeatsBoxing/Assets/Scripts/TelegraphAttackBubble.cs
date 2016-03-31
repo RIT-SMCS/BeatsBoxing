@@ -7,7 +7,7 @@ public class TelegraphAttackBubble : MonoBehaviour {
     public Vector3 startScale = new Vector3(10, 5, 1);
     public Vector3 endScale = new Vector3(1, 1, 1);
     SpriteRenderer renderer;
-    public float duration = 5.0f;
+    public float duration = 2.0f;
     float age;
 
 	// Use this for initialization
