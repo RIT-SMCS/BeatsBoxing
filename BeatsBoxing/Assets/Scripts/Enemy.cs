@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : LaneActor {
+public abstract class Enemy : LaneActor {
+
+    protected enum State { Attacking, Tracking};
 
     [SerializeField]
-    private float startX;    
+    protected float startX;
+    protected State currentState;
 
     public float StartX
     {
@@ -13,12 +16,8 @@ public class Enemy : LaneActor {
     }
 
 	// Use this for initialization
-	void Awake () {
-        _health = 1;
-        _xVelocity = -1.0f;
-        _currentLane = 0;
-        Lane = _currentLane;
-        startX = 3.0f;       
+	public virtual void Awake () {
+        StartCoroutine(PrepForAttack(2));
 	}
 	
 	// Update is called once per frame
@@ -29,7 +28,14 @@ public class Enemy : LaneActor {
 
     protected override void DoAttackPattern()
     {
+        Debug.Log("Attacked!");
+    }
 
+    protected IEnumerator PrepForAttack(float duration)
+    {
+        SetBubble(duration);
+        yield return new WaitForSeconds(duration);
+        DoAttackPattern();
     }
 
     public void OnCollisionEnter2D(Collision2D col)
@@ -38,5 +44,13 @@ public class Enemy : LaneActor {
         {           
             col.gameObject.GetComponent<Player>().TakeDamage(1);                       
         }
-    }    
+    } 
+    
+    public void SetBubble(float duration)
+    {
+        GameObject temp = Instantiate(Resources.Load("Telegraph")) as GameObject;
+        temp.transform.parent = transform;
+        temp.transform.localPosition = new Vector3(0, 0, 1);
+        temp.GetComponent<TelegraphAttackBubble>().duration = duration;
+    }   
 }

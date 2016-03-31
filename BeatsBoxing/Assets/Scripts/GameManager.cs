@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject LaneBarrierPrefab;
     public Player _player;
 	public EnemyManager eManager;
+    public GameObject TelegraphPrefab;
 
 
     [SerializeField] private float startDelay;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		InvokeRepeating("SpawnEnemies", startDelay, spawnRate);
+		InvokeRepeating("SpawnEnemies", startDelay, spawnRate / ScoreManager.SpeedScale);
 		
         for (int i = 0; i < LaneActor.MAX_LANES+1; ++i)
         {
