@@ -4,16 +4,20 @@ using System;
 
 public class Player : LaneActor
 {
-    void Awake()
+	private int attackTimer; 
+
+	void Awake()
     {
         XVelocity = -1.0f;
         Health = 5;
         Lane = 5;
+		attackTimer = -1; 
     }
 
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        //PLAYER CONTROL HANDLING
+		if (Input.GetKeyDown(KeyCode.W))
         {
             Lane++;
         }
@@ -21,15 +25,29 @@ public class Player : LaneActor
         {
             Lane--;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DoAttackPattern();
-        }
+		if (Input.GetKeyDown (KeyCode.Space)) 
+		{
+			DoAttackPattern (); 
+			//Debug.Log("ATTACK!"); 
+		}
+
+		//Keep the attack from persisting forever
+		if (attackTimer > 0) 
+		{
+			attackTimer--; 
+			if(attackTimer <= 0)
+			{
+				attackTimer = -1; 
+				this.gameObject.transform.GetChild (0).GetComponent<Attack> ().attacking = false; 
+				//Debug.Log("ATTACK STOP"); 
+			}
+		}
     }
 
-    protected override void DoAttackPattern()
+    public override void DoAttackPattern()
     {
-        
+		this.gameObject.transform.GetChild (0).GetComponent<Attack> ().attacking = true; 
+		attackTimer = 42; 
     }
 
     public void TakeDamage(int damage)

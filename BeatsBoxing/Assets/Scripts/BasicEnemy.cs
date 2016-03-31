@@ -19,7 +19,7 @@ public class BasicEnemy : Enemy {
         base.Update();
 	}
 
-    protected override void DoAttackPattern()
+    public override void DoAttackPattern()
     {
         base.DoAttackPattern();
     }    

@@ -30,7 +30,7 @@ public class TrackingEnemy : Enemy {
         base.Update();
 	}
 
-    protected override void DoAttackPattern()
+    public override void DoAttackPattern()
     {
         base.DoAttackPattern();
     }

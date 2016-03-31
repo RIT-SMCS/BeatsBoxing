@@ -57,5 +57,5 @@ public abstract class LaneActor : MonoBehaviour {
         this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
 	}
 
-    protected abstract void DoAttackPattern();
+    public abstract void DoAttackPattern();
 }

@@ -29,7 +29,7 @@ public abstract class Enemy : LaneActor {
         base.Update();
     }  
 
-    protected override void DoAttackPattern()
+    public override void DoAttackPattern()
     {
         Debug.Log("Attacked!");
     }

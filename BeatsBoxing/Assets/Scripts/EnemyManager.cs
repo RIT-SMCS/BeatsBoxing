@@ -24,14 +24,15 @@ public class EnemyManager : MonoBehaviour {
         List<GameObject> toRemove = new List<GameObject>();
 	    foreach(GameObject e in enemies)
         {            
-            if(e.transform.position.x <= -3.0f)
+            if(e.transform.position.x <= -3.0f || e.GetComponent<LaneActor>().Health <= 0)
             {
                 toRemove.Add(e);                
             }
         }        
         foreach (GameObject e in toRemove)
         {
-            RemoveEnemy(e);            
+            RemoveEnemy(e);
+            ScoreManager.AddScoreWithMultiplier(10);       
         }
 
         foreach (GameObject e in enemies)
