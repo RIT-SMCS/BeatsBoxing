@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
         string curhealth = "";
         for(int i = 0; i < 5; i++)
         {
-            if (gameManager._player.Health >= i)
+            if (gameManager._player.Health > i)
                 curhealth += " ";
             else curhealth += " ";
         }
