@@ -8,6 +8,7 @@ public abstract class Enemy : LaneActor {
     [SerializeField]
     protected float startX;
     protected State currentState;
+    protected GameObject player;
 
     public float StartX
     {
@@ -18,7 +19,9 @@ public abstract class Enemy : LaneActor {
 	// Use this for initialization
 	public virtual void Awake () {
         StartCoroutine(PrepForAttack(2));
-	}
+        player = GameObject.FindGameObjectWithTag("Player");
+
+    }
 	
 	// Update is called once per frame
 	public override void Update () {
