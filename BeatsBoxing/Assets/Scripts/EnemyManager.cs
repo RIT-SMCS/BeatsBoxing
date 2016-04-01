@@ -26,7 +26,7 @@ public class EnemyManager : MonoBehaviour {
         {            
             if(e.transform.position.x <= -3.0f || e.GetComponent<LaneActor>().Health <= 0)
             {
-                toRemove.Add(e);                
+                toRemove.Add(e);
             }
         }        
         foreach (GameObject e in toRemove)

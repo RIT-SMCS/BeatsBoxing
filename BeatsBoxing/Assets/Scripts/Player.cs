@@ -25,7 +25,7 @@ public class Player : LaneActor
         {
             Lane--;
         }
-		if (Input.GetKeyDown (KeyCode.Space)) 
+		if (Input.GetKeyDown (KeyCode.Space) && attackTimer <= 0) 
 		{
 			DoAttackPattern (); 
 			//Debug.Log("ATTACK!"); 

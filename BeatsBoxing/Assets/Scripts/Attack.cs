@@ -13,6 +13,7 @@ public class Attack : MonoBehaviour {
 		attacking = false;
 
         _renderer = this.GetComponent<SpriteRenderer>();
+
         
 	}
 	
@@ -38,6 +39,7 @@ public class Attack : MonoBehaviour {
             other.gameObject.GetComponent<Enemy>().Health -= 1; 
 			//end the attack after hitting something
 			attacking = false; 
+			ScoreManager.Combo += 1; 
 
 			Debug.Log("ENEMY HIT"); 
 		}
