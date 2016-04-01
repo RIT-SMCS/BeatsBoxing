@@ -41,7 +41,7 @@ public abstract class Enemy : LaneActor {
         DoAttackPattern();
     }
 
-    public void OnCollisionEnter2D(Collision2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {        
         if (col.gameObject.tag == "Player")
         {           
