@@ -31,8 +31,7 @@ public class EnemyManager : MonoBehaviour {
         }        
         foreach (GameObject e in toRemove)
         {
-            RemoveEnemy(e);
-            ScoreManager.AddScoreWithMultiplier(10);       
+            RemoveEnemy(e);     
         }
 
         foreach (GameObject e in enemies)
@@ -48,6 +47,7 @@ public class EnemyManager : MonoBehaviour {
         temp.transform.position = new Vector3(temp.GetComponent<Enemy>().StartX, 0.0f, 0.0f);
         temp.GetComponent<Enemy>().Lane = laneNum;
         temp.transform.parent = this.transform;
+        temp.name = Time.realtimeSinceStartup + "";
         enemies.Add(temp);        
     }
     

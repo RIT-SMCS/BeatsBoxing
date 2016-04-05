@@ -39,9 +39,10 @@ public class Attack : MonoBehaviour {
             other.gameObject.GetComponent<Enemy>().Health -= 1; 
 			//end the attack after hitting something
 			attacking = false; 
-			ScoreManager.Combo += 1; 
+			ScoreManager.Combo += 1;
+            ScoreManager.AddScoreWithMultiplier(10);
 
-			//Debug.Log("ENEMY HIT"); 
+            Debug.Log("ENEMY HIT "+ Time.realtimeSinceStartup); 
 		}
 	}
 }
