@@ -12,7 +12,6 @@ public class TrackingEnemy : Enemy {
         _xVelocity = -1.0f;
         _currentLane = 0;
         Lane = _currentLane;
-        startX = 3.0f;
         currentState = State.Tracking;
         attackRange = 2;
     }

@@ -40,15 +40,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemies: 10
-  enemyToSpawn: {fileID: 188800, guid: 07a47490b4024d44082ca28029c34de3, type: 2}
-  player: {fileID: 0}
+  numEnemies: 0
+  enemyToSpawn: {fileID: 190940, guid: d2a266d03ad76cb478d01f613f5bd08b, type: 2}
+  player: {fileID: 128676, guid: 18da1f00a5f8bcc43bce6560c7ecb1f7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 190940, guid: d2a266d03ad76cb478d01f613f5bd08b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 128676, guid: 18da1f00a5f8bcc43bce6560c7ecb1f7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142812}
