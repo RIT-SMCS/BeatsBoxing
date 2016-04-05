@@ -4,8 +4,9 @@ using System;
 
 public class Player : LaneActor
 {
-	private int attackTimer; 
+	private int attackTimer;
 
+    public int AttackDuration;
 	void Awake()
     {
         XVelocity = -1.0f;
@@ -47,7 +48,7 @@ public class Player : LaneActor
     public override void DoAttackPattern()
     {
 		this.gameObject.transform.GetChild (0).GetComponent<Attack> ().attacking = true; 
-		attackTimer = 42; 
+		attackTimer = AttackDuration; 
     }
 
     public void TakeDamage(int damage)
