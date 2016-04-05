@@ -67,6 +67,6 @@ public class GameManager : MonoBehaviour {
 
 	public void Attack() {
 		//SOMEBODY: Can't call DoAttackPattern!
-		//player.DoAttackPattern ();
+		_player.DoAttackPattern ();
 	}
 }

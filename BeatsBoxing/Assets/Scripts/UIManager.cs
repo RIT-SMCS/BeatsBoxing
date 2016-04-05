@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
 
 		if (Input.touchCount > 0) {
 			Touch currentTouch = Input.GetTouch (0);
+			SetText (Mobile, "touchPos: " + currentTouch.position + "\t screen: " + Screen.width);
 			if (currentTouch.phase == TouchPhase.Began) {
 				touchDelta = new Vector2 (0.0f, 0.0f);
 				touchTime = 0.0f;
@@ -75,7 +76,7 @@ public class UIManager : MonoBehaviour
 			} else if (currentTouch.phase == TouchPhase.Moved) {
 				touchDelta = currentTouch.deltaPosition;
 				touchTime += currentTouch.deltaTime;
-				SetText (Mobile, "dt: " + touchTime + "\ndeltaPos / dt: " + touchDelta.magnitude / touchTime);
+
 
 			} else if (currentTouch.phase == TouchPhase.Ended) {
 				if (touchDelta.magnitude / touchTime > 0.5) {

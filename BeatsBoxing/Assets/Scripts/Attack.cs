@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-        Debug.Log("Stay called "+asdf++);
+        //Debug.Log("Stay called "+asdf++);
 		if (attacking && other.gameObject.CompareTag("Enemy")) 
 		{
             //deal damage if attacking a valid enemy
@@ -41,7 +41,7 @@ public class Attack : MonoBehaviour {
 			attacking = false; 
 			ScoreManager.Combo += 1; 
 
-			Debug.Log("ENEMY HIT"); 
+			//Debug.Log("ENEMY HIT"); 
 		}
 	}
 }

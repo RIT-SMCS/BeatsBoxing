@@ -31,7 +31,7 @@ public abstract class Enemy : LaneActor {
 
     public override void DoAttackPattern()
     {
-        Debug.Log("Attacked!");
+        //Debug.Log("Attacked!");
     }
 
     protected IEnumerator PrepForAttack(float duration)

@@ -21,11 +21,12 @@ public class BackgroundPreview : MonoBehaviour {
             //deletes all current children
             var children = new List<GameObject>();
             foreach (Transform child in transform) { children.Add(child.gameObject); }
+			#if UNITY_EDITOR
             children.ForEach(child => UnityEditor.EditorApplication.delayCall += () =>
                 {
                     DestroyImmediate(child.gameObject);
                 });
-
+			#endif
             //create new children in the correct locations
             float deltaX = transform.position.x - 0.5f * (Width - 1) * TileSprite.bounds.size.x;
             float deltaY = transform.position.y - 0.5f * (Height - 1) * TileSprite.bounds.size.y;

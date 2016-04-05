@@ -22,6 +22,6 @@ public class BackgroundScroll : MonoBehaviour {
         deltaX = ScrollSpeed * ScoreManager.SpeedScale * Time.deltaTime;
         float delPosition = Mathf.Repeat((startPosition.x - transform.position.x) + deltaX, tileSizeX);
         transform.position = startPosition + Vector3.left * delPosition;
-        Debug.Log(delPosition + " - " + tileSizeX);
+        //Debug.Log(delPosition + " - " + tileSizeX);
 	}
 }
