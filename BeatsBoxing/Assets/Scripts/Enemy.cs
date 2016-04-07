@@ -55,5 +55,5 @@ public abstract class Enemy : LaneActor {
         temp.transform.parent = transform;
         temp.transform.localPosition = new Vector3(0, 0, 1);
         temp.GetComponent<TelegraphAttackBubble>().duration = duration;
-    }   
+    }      
 }

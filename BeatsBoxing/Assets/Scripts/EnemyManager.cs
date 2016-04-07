@@ -9,7 +9,8 @@ public class EnemyManager : MonoBehaviour {
     public GameObject enemyToSpawn;
     List<GameObject> enemies;
     public GameObject player;
-    private string[] enemyTable;       
+    private string[] enemyTable;
+    float minX;  
 
     public List<GameObject> Enemies
     {
@@ -21,7 +22,7 @@ public class EnemyManager : MonoBehaviour {
         set { enemyTable = value; }
     }
 	// Use this for initialization
-	void Start() {
+	void Start() {        
         enemies = new List<GameObject>();
         enemyTable = new string[numEnemies];
         enemyTable[0] = "BasicEnemyPrefab";
@@ -33,13 +34,18 @@ public class EnemyManager : MonoBehaviour {
         enemyTable[6] = "TrackingEnemyPrefab";
         enemyTable[7] = "SpikesPrefab";
     }
+
+    void Awake()
+    {
+        minX = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(Vector3.zero).x;
+    }
 	
 	// Update is called once per frame
 	void Update () {
         List<GameObject> toRemove = new List<GameObject>();
 	    foreach(GameObject e in enemies)
         {            
-            if(e.transform.position.x <= -3.0f || e.GetComponent<LaneActor>().Health <= 0)
+            if(e.transform.position.x <= minX || e.GetComponent<LaneActor>().Health <= 0)
             {
                 toRemove.Add(e);
             }
