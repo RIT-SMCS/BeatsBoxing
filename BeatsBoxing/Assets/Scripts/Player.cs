@@ -73,9 +73,11 @@ public class Player : LaneActor
         ScoreManager.Combo = 0;
 
         //anim.SetTrigger(damagehash);
-        age = 0.0f;
-        this.knockingBack = true;
-        this.startingPos = transform.position;
+		if (Camera.main.GetComponent<Camera> ().WorldToScreenPoint (startingPos - new Vector3 (2, 0, 0)).x >= 100)
+			age = 0.0f;
+			this.knockingBack = true;
+			this.startingPos = transform.position;
+		}
     }
 
     void Knockback()
