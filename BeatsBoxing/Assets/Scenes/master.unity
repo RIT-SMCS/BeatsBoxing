@@ -1750,10 +1750,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1669351122}
-    - target: {fileID: 11401854, guid: fb2bc9f72d7e8a0479ca29cceda73887, type: 2}
-      propertyPath: enemyToSpawn
-      value: 
-      objectReference: {fileID: 190940, guid: d2a266d03ad76cb478d01f613f5bd08b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb2bc9f72d7e8a0479ca29cceda73887, type: 2}
   m_IsPrefabParent: 0
