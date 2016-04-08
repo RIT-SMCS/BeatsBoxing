@@ -9,8 +9,9 @@ public class Player : LaneActor
     bool knockingBack = false;
     Vector3 baseScale;
     Vector3 startingPos;
-    //Animator anim;
-    //int damagehash = Animator.StringToHash("Damaged");
+
+
+    public int AttackDuration;
 	void Awake()
     {
         XVelocity = -1.0f;
@@ -63,8 +64,9 @@ public class Player : LaneActor
         if (!knockingBack)
         {
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
-            attackTimer = 42;
+            attackTimer = AttackDuration; 
         }
+
     }
 
     public void TakeDamage(int damage)
@@ -74,6 +76,7 @@ public class Player : LaneActor
 
         //anim.SetTrigger(damagehash);
 		if (Camera.main.GetComponent<Camera> ().WorldToScreenPoint (startingPos - new Vector3 (2, 0, 0)).x >= 100)
+        {
 			age = 0.0f;
 			this.knockingBack = true;
 			this.startingPos = transform.position;
