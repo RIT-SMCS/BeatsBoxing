@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System;
 
 public class Player : LaneActor
 {
-	private int attackTimer;
     float age = 0;
     bool knockingBack = false;
     Vector3 baseScale;
     Vector3 startingPos;
-
-
+	private int attackTimer; 
+	public AudioClip punch; //the actual punch sound
+	public AudioClip switchLane; //the switching lanes sound
+	public AudioClip takeDamage; //the "oof" sound effect
+	public AudioSource source; //the audioSource object that plays the sounds
+	float audioVol; //volume of any given sound
     public int AttackDuration;
+    
 	void Awake()
     {
         XVelocity = -1.0f;
@@ -20,6 +24,9 @@ public class Player : LaneActor
 		attackTimer = -1;
         baseScale = transform.localScale;
         startingPos = transform.position;
+		//audio setup
+		audioVol = 3.0f; 
+		source = GetComponent<AudioSource> (); 
     }
 
     public override void Update()
@@ -30,10 +37,12 @@ public class Player : LaneActor
 		if (Input.GetKeyDown(KeyCode.W) && !knockingBack)
         {
             Lane++;
+			source.PlayOneShot (switchLane, audioVol); 
         }
         if (Input.GetKeyDown(KeyCode.S) && !knockingBack)
         {
             Lane--;
+			source.PlayOneShot (switchLane, audioVol); 
         }
 		if (Input.GetKeyDown (KeyCode.Space) && attackTimer <= 0) 
 		{
@@ -65,15 +74,17 @@ public class Player : LaneActor
         {
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
             attackTimer = AttackDuration; 
+            source.PlayOneShot (punch, audioVol); 
         }
-
+		
     }
 
     public void TakeDamage(int damage)
     {
         this.Health -= damage;        
         ScoreManager.Combo = 0;
-
+        source.PlayOneShot (takeDamage, audioVol); 
+        
         //anim.SetTrigger(damagehash);
 		if (Camera.main.GetComponent<Camera> ().WorldToScreenPoint (startingPos - new Vector3 (2, 0, 0)).x >= 100)
         {
@@ -95,5 +106,6 @@ public class Player : LaneActor
         {
             knockingBack = false;
         }
+		
     }
 }
