@@ -74,19 +74,19 @@ public class UIManager : MonoBehaviour
 				if (currentTouch.position.x > Screen.width / 2) {
 					gameManager.Attack ();
 				}
-			} else if (currentTouch.phase == TouchPhase.Moved) {
-				touchDelta = currentTouch.deltaPosition;
-				touchTime += currentTouch.deltaTime;
+			} else if (currentTouch.position.x <= Screen.width / 2) {
+				if (currentTouch.phase == TouchPhase.Moved) {
+					touchDelta = currentTouch.deltaPosition;
+					touchTime += currentTouch.deltaTime;
+				} else if (currentTouch.phase == TouchPhase.Ended) {
+					if (touchDelta.magnitude / touchTime > 0.5) {
+						if (touchDelta.y > 0) {
+							gameManager._player.Lane++;
+						} else if (touchDelta.y < 0) {
+							gameManager._player.Lane--;	
+						}
 
-
-			} else if (currentTouch.phase == TouchPhase.Ended) {
-				if (touchDelta.magnitude / touchTime > 0.5) {
-					if (touchDelta.y > 0) {
-						gameManager._player.Lane++;
-					} else if (touchDelta.y < 0) {
-						gameManager._player.Lane--;	
 					}
-
 				}
 			}
 		}
