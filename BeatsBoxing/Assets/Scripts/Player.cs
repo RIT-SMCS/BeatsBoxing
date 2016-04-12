@@ -6,8 +6,9 @@ public class Player : LaneActor
 {
     float age = 0;
     bool knockingBack = false;
+
     Vector3 baseScale;
-    Vector3 startingPos;
+    public Vector3 startingPos;
 	private int attackTimer; 
 	public AudioClip punch; //the actual punch sound
 	public AudioClip switchLane; //the switching lanes sound
@@ -85,7 +86,6 @@ public class Player : LaneActor
         ScoreManager.Combo = 0;
         source.PlayOneShot (takeDamage, audioVol); 
         
-        //anim.SetTrigger(damagehash);
 		if (Camera.main.GetComponent<Camera> ().WorldToScreenPoint (startingPos - new Vector3 (2, 0, 0)).x >= 100)
         {
 			age = 0.0f;
@@ -105,6 +105,7 @@ public class Player : LaneActor
         if (age > duration)
         {
             knockingBack = false;
+			this.startingPos = transform.position;
         }
 		
     }

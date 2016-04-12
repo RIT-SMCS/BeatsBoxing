@@ -59,6 +59,8 @@ public class UIManager : MonoBehaviour
         ComboText.text = "Combo x" + ScoreManager.Combo;
         MultText.text =  "Multiplier x" + ScoreManager.Multiplier;
 
+		SetText (Mobile,"" + Camera.main.GetComponent<Camera> ().WorldToScreenPoint (gameManager._player.startingPos));
+
     }
 
     void ManageTouches()
@@ -66,7 +68,6 @@ public class UIManager : MonoBehaviour
 
 		if (Input.touchCount > 0) {
 			Touch currentTouch = Input.GetTouch (0);
-			SetText (Mobile, "touchPos: " + currentTouch.position + "\t screen: " + Screen.width);
 			if (currentTouch.phase == TouchPhase.Began) {
 				touchDelta = new Vector2 (0.0f, 0.0f);
 				touchTime = 0.0f;
