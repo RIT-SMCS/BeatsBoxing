@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Turret : Enemy {
 
-    //private 
+    private GameObject bullet; 
 
     // Use this for initialization
     public override void Awake()
@@ -14,6 +14,7 @@ public class Turret : Enemy {
         _currentLane = 0;
         Lane = _currentLane;
         currentState = State.Attacking;
+        bullet = null;
     }
 
     // Update is called once per frame
@@ -25,6 +26,10 @@ public class Turret : Enemy {
     public override void DoAttackPattern()
     {
         base.DoAttackPattern();
-
+        if (bullet == null)
+        {
+            bullet = Instantiate(Resources.Load("Bullet")) as GameObject;
+            bullet.transform.position = this.transform.position;
+        }
     }
 }

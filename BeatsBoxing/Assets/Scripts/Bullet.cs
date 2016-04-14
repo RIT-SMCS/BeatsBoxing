@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour {
 
     private float velocity = -2.0f;
     private float minX;
+    private bool isReflected;
 
     public float Velocity
     {
@@ -15,7 +16,7 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        isReflected = false;
 	}
 
     void Awake()
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour {
         if(this.transform.position.x <= minX)
         {
             Destroy(this);
-        }
+        }       
     }
 
     public void OnTriggerEnter2D(Collider2D col)

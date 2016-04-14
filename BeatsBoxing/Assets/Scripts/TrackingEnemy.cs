@@ -31,6 +31,6 @@ public class TrackingEnemy : Enemy {
 
     public override void DoAttackPattern()
     {
-        base.DoAttackPattern();
+        base.DoAttackPattern();        
     }
 }
