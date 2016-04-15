@@ -11,16 +11,17 @@ public class GameManager : MonoBehaviour {
     public Player _player;
 	public EnemyManager eManager;
     public GameObject TelegraphPrefab;
-    public float spawnThreshold;
-    public float timeToSpawn;
 
 
     [SerializeField] private float startDelay;
     [SerializeField] private float spawnRate;
 
-	// Use this for initialization
-	void Awake () {
-		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate);
+    private float lastSpawnTime;
+
+    // Use this for initialization
+    void Awake () {
+        lastSpawnTime = startDelay;
+		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		
         for (int i = 0; i < LaneActor.MAX_LANES+1; ++i)
         {
@@ -47,6 +48,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Time.time >= lastSpawnTime + spawnRate / (0.9f * ScoreManager.SpeedScale)) 
+        {
+            lastSpawnTime = Time.time;
+            SpawnEnemies();
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             SpawnEnemies();
@@ -59,12 +66,6 @@ public class GameManager : MonoBehaviour {
         {
             ScoreManager.AddScoreWithMultiplier(10);
         }
-        if(timeToSpawn >= spawnThreshold)
-        {
-            SpawnEnemies();
-            timeToSpawn = 0.0f;
-        }
-        timeToSpawn += Time.deltaTime * ScoreManager.SpeedScale;
     }
 
     void SpawnEnemies()

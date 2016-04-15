@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcad0f00198c0e4fb22537b0a6d0d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMusic: {fileID: 0}
+  source: {fileID: 0}
 --- !u!82 &69544854
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1304,6 +1306,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11460428, guid: 18da1f00a5f8bcc43bce6560c7ecb1f7, type: 2}
+      propertyPath: AttackDuration
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18da1f00a5f8bcc43bce6560c7ecb1f7, type: 2}
   m_IsPrefabParent: 0
@@ -1556,6 +1562,54 @@ Prefab:
       propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22450812, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450812, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450812, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450812, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450812, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450812, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22412790, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22412790, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22412790, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22412790, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22412790, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22412790, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 205b229c489ea8f4b993af620b5bb60d, type: 2}
   m_IsPrefabParent: 0
@@ -1672,6 +1726,14 @@ Prefab:
       propertyPath: eManager
       value: 
       objectReference: {fileID: 118184176}
+    - target: {fileID: 11484386, guid: e278a177319535049a0967f01c9e4ba6, type: 2}
+      propertyPath: beatsAheadToSpawnEnemies
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11484386, guid: e278a177319535049a0967f01c9e4ba6, type: 2}
+      propertyPath: beatsPerMinute
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e278a177319535049a0967f01c9e4ba6, type: 2}
   m_IsPrefabParent: 0
@@ -1778,6 +1840,10 @@ Prefab:
       propertyPath: enemyToSpawn
       value: 
       objectReference: {fileID: 190940, guid: d2a266d03ad76cb478d01f613f5bd08b, type: 2}
+    - target: {fileID: 11401854, guid: fb2bc9f72d7e8a0479ca29cceda73887, type: 2}
+      propertyPath: beatsPerMinute
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb2bc9f72d7e8a0479ca29cceda73887, type: 2}
   m_IsPrefabParent: 0
