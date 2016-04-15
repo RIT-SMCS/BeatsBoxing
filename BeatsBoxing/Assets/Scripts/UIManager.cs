@@ -26,24 +26,34 @@ public class UIManager : MonoBehaviour
         {
             gameManager = gmObj.GetComponent<GameManager>();
         }
+
+        textDict = new Dictionary<GameObject, Text>();
+
         ComboText = ComboMeter.GetComponent<Text>();
         HealthText = Health.GetComponent<Text>();
-		MobileText = Mobile.GetComponent<Text> ();
+        if (Mobile != null)
+        {
+            MobileText = Mobile.GetComponent<Text>();
+            textDict.Add(Mobile, MobileText);
+        }
         MultText = Mult.GetComponent<Text>();
         ScoreText = Score.GetComponent<Text>();
 
         pausePrefab = Resources.Load("PauseMenu") as GameObject;
 
-        textDict = new Dictionary<GameObject, Text>();
+        
         textDict.Add(Health, HealthText);
         textDict.Add(ComboMeter, ComboText);
-		textDict.Add(Mobile, MobileText);
+		
        
     }
 
     public void SetText(GameObject obj, string newText)
     {
-        textDict[obj].text = newText;
+        if (obj != null)
+        {
+            textDict[obj].text = newText;
+        }
     }
 
 
@@ -65,7 +75,7 @@ public class UIManager : MonoBehaviour
         ComboText.text = "Combo x" + ScoreManager.Combo;
         MultText.text =  "Multiplier x" + ScoreManager.Multiplier;
 
-		SetText (Mobile,"" + Camera.main.GetComponent<Camera> ().WorldToScreenPoint (gameManager._player.startingPos));
+		//SetText (Mobile,"" + Camera.main.GetComponent<Camera> ().WorldToScreenPoint (gameManager._player.startingPos));
 
     }
 
