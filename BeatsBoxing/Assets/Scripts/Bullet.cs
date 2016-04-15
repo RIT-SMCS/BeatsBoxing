@@ -4,19 +4,26 @@ using System.Collections;
 [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
 public class Bullet : MonoBehaviour {
 
-    private float velocity = -2.0f;
+    private float velocity; 
     private float minX;
+    private bool isReflected;
 
     public float Velocity
     {
         get { return velocity; }
         set { velocity = value; }
     }
+    public bool IsReflected
+    {
+        get { return isReflected; }
+        set { isReflected = value; }
+    }
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+        isReflected = false;
+        velocity = -2.0f - (ScoreManager.SpeedScale - 1.0f);
+    }
 
     void Awake()
     {
@@ -29,8 +36,8 @@ public class Bullet : MonoBehaviour {
 
         if(this.transform.position.x <= minX)
         {
-            Destroy(this);
-        }
+            Destroy(this.gameObject);
+        }       
     }
 
     public void OnTriggerEnter2D(Collider2D col)
@@ -38,7 +45,13 @@ public class Bullet : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<Player>().TakeDamage(1);
-            Destroy(this);
+            Destroy(this.gameObject);
+        }
+        if (col.gameObject.tag == "Enemy" && isReflected == true)
+        {
+            Debug.Log("Bullet hit Enemy");
+            col.gameObject.GetComponent<Enemy>().Health -= 1;
+            Destroy(this.gameObject);
         }
     }
 }

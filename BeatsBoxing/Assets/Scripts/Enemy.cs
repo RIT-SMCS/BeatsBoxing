@@ -4,8 +4,7 @@ using System.Collections;
 public abstract class Enemy : LaneActor {
 
     protected enum State { Attacking, Tracking};
-
-    [SerializeField]
+        
     protected float startX;
     protected State currentState;
     protected GameObject player;

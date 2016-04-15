@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
     public Player _player;
 	public EnemyManager eManager;
     public GameObject TelegraphPrefab;
+    public float spawnThreshold;
+    public float timeToSpawn;
 
 
     [SerializeField] private float startDelay;
@@ -18,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		InvokeRepeating("SpawnEnemies", startDelay, spawnRate / ScoreManager.SpeedScale);
+		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate);
 		
         for (int i = 0; i < LaneActor.MAX_LANES+1; ++i)
         {
@@ -57,6 +59,12 @@ public class GameManager : MonoBehaviour {
         {
             ScoreManager.AddScoreWithMultiplier(10);
         }
+        if(timeToSpawn >= spawnThreshold)
+        {
+            SpawnEnemies();
+            timeToSpawn = 0.0f;
+        }
+        timeToSpawn += Time.deltaTime * ScoreManager.SpeedScale;
     }
 
     void SpawnEnemies()
