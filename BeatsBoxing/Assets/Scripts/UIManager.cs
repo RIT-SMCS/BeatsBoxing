@@ -10,7 +10,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject ComboMeter, Health, Mobile, Mult, Score;
     Text ComboText, HealthText, MobileText, MultText, ScoreText;
     Dictionary<GameObject, Text> textDict;
-    
+    GameObject pausePrefab;
+    GameObject pauseMenu;
+
+    bool paused = false;
+
 	float touchTime;
 	Vector2 touchDelta;
 
@@ -27,6 +31,8 @@ public class UIManager : MonoBehaviour
 		MobileText = Mobile.GetComponent<Text> ();
         MultText = Mult.GetComponent<Text>();
         ScoreText = Score.GetComponent<Text>();
+
+        pausePrefab = Resources.Load("PauseMenu") as GameObject;
 
         textDict = new Dictionary<GameObject, Text>();
         textDict.Add(Health, HealthText);
@@ -64,8 +70,7 @@ public class UIManager : MonoBehaviour
     }
 
     void ManageTouches()
-	{
-
+	{ 
 		if (Input.touchCount > 0) {
 			Touch currentTouch = Input.GetTouch (0);
 			if (currentTouch.phase == TouchPhase.Began) {
@@ -91,4 +96,29 @@ public class UIManager : MonoBehaviour
 			}
 		}
 	}
+
+    public void Pause()
+    {
+        
+        if (pausePrefab != null && !paused)
+        {
+            Time.timeScale = 0.0f;
+            GameObject pauseMenu = Instantiate(pausePrefab) as GameObject;
+            pauseMenu.transform.SetParent(transform);
+            pauseMenu.transform.localPosition = new Vector3(0, 0, 0);
+            pauseMenu.transform.localScale = new Vector3(1, 1, 1);
+            pauseMenu.name = "PauseMenu";
+            Button closeBtn = pauseMenu.transform.FindChild("RowFive").transform.FindChild("ResumeButton").GetComponent<Button>() as Button;
+            closeBtn.onClick.AddListener(delegate() { Resume(); });
+            paused = true;
+        }
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1.0f;
+        Destroy(transform.FindChild("PauseMenu").gameObject);
+        pauseMenu = null;
+        paused = false;
+    }
 }
