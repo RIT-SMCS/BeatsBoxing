@@ -10,6 +10,8 @@ public abstract class LaneActor : MonoBehaviour {
     protected int _currentLane;
     protected float _xVelocity;
 
+    protected float _movementScale = 1.0f;
+
     private SpriteRenderer _renderer;
 
     public Color Color
@@ -54,7 +56,7 @@ public abstract class LaneActor : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
-        this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+        this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
 	}
 
     public abstract void DoAttackPattern();

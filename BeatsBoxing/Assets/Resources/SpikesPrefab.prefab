@@ -55,7 +55,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 176764}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6be1ff02f88ffc4a91b60e14dff4b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startX: 8
 --- !u!212 &21262032
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -123,6 +122,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Color.b
       value: .760784388
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

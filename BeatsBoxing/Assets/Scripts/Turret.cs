@@ -15,12 +15,14 @@ public class Turret : Enemy {
         Lane = _currentLane;
         currentState = State.Attacking;
         bullet = null;
+        _movementScale = 0.25f;
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
+        DoAttackPattern();
     }
 
     public override void DoAttackPattern()
