@@ -16,6 +16,14 @@ public class Player : LaneActor
 	public AudioSource source; //the audioSource object that plays the sounds
 	float audioVol; //volume of any given sound
     public int AttackDuration;
+
+	public Sprite animation1;
+	public Sprite animation2; 
+	public Sprite attackAnimation; 
+	public float animationTimer;
+	bool animationState; 
+	//Lower this number to increase the speed of the walk animation
+	public float ANIMATIONSPEED; 
     
 	void Awake()
     {
@@ -28,6 +36,9 @@ public class Player : LaneActor
 		//audio setup
 		audioVol = 3.0f; 
 		source = GetComponent<AudioSource> (); 
+		animationTimer = 0.0f; 
+		animationState = true; 
+		ANIMATIONSPEED = 0.5f; 
     }
 
     public override void Update()
@@ -67,6 +78,23 @@ public class Player : LaneActor
         {
             Knockback();
         }
+
+		animationTimer += Time.deltaTime * ScoreManager.SpeedScale; 
+		if (animationTimer >= 0.5f) 
+		{
+			animationTimer = 0.0f; 
+			if(animationState)
+			{
+				this.gameObject.GetComponent<SpriteRenderer>().sprite = animation2; 
+				animationState = !animationState;
+			}
+			else
+			{
+				this.gameObject.GetComponent<SpriteRenderer>().sprite = animation1; 
+				animationState = !animationState;
+			}
+
+		}
     }
 
     public override void DoAttackPattern()
@@ -76,6 +104,7 @@ public class Player : LaneActor
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
             attackTimer = AttackDuration; 
             source.PlayOneShot (punch, audioVol); 
+			this.gameObject.GetComponent<SpriteRenderer>().sprite = attackAnimation; 
         }
 		
     }

@@ -23,26 +23,7 @@ public class GameManager : MonoBehaviour {
         lastSpawnTime = startDelay;
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		
-        for (int i = 0; i < LaneActor.MAX_LANES+1; ++i)
-        {
-            GameObject lb = Instantiate(LaneBarrierPrefab, new Vector3(0.0f, 1.0f * (-3 + i) - 0.5f, 1.0f), Quaternion.identity) as GameObject;
-            if (i != 0 && i != LaneActor.MAX_LANES)
-            {
-                lb.transform.localScale = new Vector3(lb.transform.localScale.x, 0.5f * lb.transform.localScale.y, lb.transform.localScale.z);
-            }
-            lb.transform.parent = this.transform;
-            lb.name = "barrier " + i;
-            //Lane l = Instantiate(LanePrefab, new Vector3(-Camera.main.orthographicSize, 1.0f * (-3 + i), 0.0f), Quaternion.identity) as Lane;
-            //l.transform.parent = this.transform;
-            //l.name = "lane " + i;
-            //for (int j = 0; j < 100; ++j)
-            //{
-            //    Lane subLane = Instantiate(LanePrefab, new Vector3(l.transform.position.x + 0.3f*(j+1), 1.0f * l.transform.position.y, 0.0f), Quaternion.identity) as Lane;
-            //    subLane.transform.parent = l.transform;
-            //    subLane.name = ""+j;
-            //    subLane.IsParent = false;
-            //}
-        }
+        
 
     }
 	

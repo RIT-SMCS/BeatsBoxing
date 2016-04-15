@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour {
 
 		musicVol = 3.0f; 
 		source = GetComponent<AudioSource> (); 
-		//source.PlayOneShot (startMusic, musicVol); 
+		source.PlayOneShot (startMusic, musicVol); 
 	}
 	
 	// Update is called once per frame
