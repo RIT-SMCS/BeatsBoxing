@@ -8,7 +8,7 @@ public class TelegraphAttackBubble : MonoBehaviour {
     public Vector3 endScale = new Vector3(1, 1, 1);
     SpriteRenderer renderer;
     public float duration = 2.0f;
-    float age;
+    public float age;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,7 @@ public class TelegraphAttackBubble : MonoBehaviour {
         renderer.color = Color.Lerp(startColor, endColor, t);
         transform.localScale = Vector3.Lerp(startScale, endScale, t);
 
-        if(t == 1.0)
+        if(t >= 1.0)
         {
             Destroy(gameObject);
         }

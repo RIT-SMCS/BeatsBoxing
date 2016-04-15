@@ -10,7 +10,11 @@ public class EnemyManager : MonoBehaviour {
     List<GameObject> enemies;
     public GameObject player;
     private string[] enemyTable;
-    float minX;  
+    float minX;
+
+
+    [SerializeField]
+    private float beatsPerMinute;
 
     public List<GameObject> Enemies
     {
@@ -58,7 +62,7 @@ public class EnemyManager : MonoBehaviour {
 
         foreach (GameObject e in enemies)
         {
-            e.GetComponent<Enemy>().XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
+            //e.GetComponent<Enemy>().XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
         }
     }
 
@@ -66,8 +70,23 @@ public class EnemyManager : MonoBehaviour {
     public void MakeEnemy(int laneNum)
     {
         GameObject temp = Instantiate(Resources.Load(enemyTable[Random.Range(0, numEnemies)])) as GameObject;
-        temp.transform.position = new Vector3(temp.GetComponent<Enemy>().StartX, 0.0f, 0.0f);
-        temp.GetComponent<Enemy>().Lane = laneNum;
+        Enemy en = temp.GetComponent<Enemy>();
+        //set the XVelocity to the appropriate speed
+        en.XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
+        //get the current x position of the Player's Attack hitbox
+        float attackPositionX = player.GetComponentInChildren<Attack>().transform.position.x;
+        //find the change in x position per beat of the song
+        float dxPerBeat = 60.0f * -en.XVelocity / (beatsPerMinute);
+        //find how many beats it will take to ensure the enemy spawns off the right side of the screen
+        int beatsToTravel = 1 + (int)((Camera.main.ScreenToWorldPoint(Screen.width * Vector3.right).x - attackPositionX) / dxPerBeat);
+        //find the distance between the spawn and the attack hitbox
+        float deltaX = dxPerBeat * beatsToTravel;
+        //find the time it will take the enemy to reach the hitbox
+        float timeToTravel = deltaX / -en.XVelocity;
+        //set the bubble duration to disappear the moment it reaches the hitbox
+        en.BubbleDuration = timeToTravel;
+        temp.transform.position = new Vector3((en.StartX = attackPositionX + deltaX), 0.0f, 0.0f);
+        en.Lane = laneNum;
         temp.transform.parent = this.transform;
         enemies.Add(temp);        
     }

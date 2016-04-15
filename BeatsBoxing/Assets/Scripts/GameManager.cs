@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float startDelay;
     [SerializeField] private float spawnRate;
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake () {
 		InvokeRepeating("SpawnEnemies", startDelay, spawnRate / ScoreManager.SpeedScale);
 		
         for (int i = 0; i < LaneActor.MAX_LANES+1; ++i)

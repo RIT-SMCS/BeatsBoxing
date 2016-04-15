@@ -10,6 +10,15 @@ public abstract class Enemy : LaneActor {
     protected State currentState;
     protected GameObject player;
 
+    private float bubbleDuration = 2.0f;
+    public float BubbleDuration
+    {
+        get { return bubbleDuration; }
+        set { bubbleDuration = Mathf.Max(0.1f, value);
+            StartCoroutine(PrepForAttack(bubbleDuration));
+        }
+    }
+
     public float StartX
     {
         get { return startX; }
@@ -18,7 +27,7 @@ public abstract class Enemy : LaneActor {
 
 	// Use this for initialization
 	public virtual void Awake () {
-        StartCoroutine(PrepForAttack(2));
+        
         player = GameObject.FindGameObjectWithTag("Player");
 
     }
