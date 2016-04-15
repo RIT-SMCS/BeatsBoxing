@@ -82,7 +82,12 @@ public class Player : LaneActor
 
     public void TakeDamage(int damage)
     {
-        this.Health -= damage;        
+        this.Health -= damage; 
+       
+        if (this.Health == 0) {
+            Application.LoadLevel(Application.levelCount - 1);
+        }
+
         ScoreManager.Combo = 0;
         source.PlayOneShot (takeDamage, audioVol); 
         

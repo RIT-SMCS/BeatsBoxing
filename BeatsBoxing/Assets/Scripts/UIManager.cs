@@ -108,10 +108,21 @@ public class UIManager : MonoBehaviour
             pauseMenu.transform.localPosition = new Vector3(0, 0, 0);
             pauseMenu.transform.localScale = new Vector3(1, 1, 1);
             pauseMenu.name = "PauseMenu";
+            Button menuBtn = pauseMenu.transform.FindChild("RowThree").transform.FindChild("MainMenuButton").GetComponent<Button>() as Button;
+            menuBtn.onClick.AddListener(delegate() { ToMenu(); });
             Button closeBtn = pauseMenu.transform.FindChild("RowFive").transform.FindChild("ResumeButton").GetComponent<Button>() as Button;
             closeBtn.onClick.AddListener(delegate() { Resume(); });
             paused = true;
+
+
         }
+    }
+
+    public void ToMenu()
+    {
+        Debug.Log("ToMenu");
+        Time.timeScale = 1.0f;
+        Application.LoadLevel(0);
     }
 
     public void Resume()
