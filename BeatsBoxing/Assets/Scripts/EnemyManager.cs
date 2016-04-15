@@ -9,7 +9,8 @@ public class EnemyManager : MonoBehaviour {
     List<GameObject> enemies;
     public GameObject player;
     private string[] enemyTable;
-    float minX;  
+    float minX;
+    float rightEdge; 
 
     public List<GameObject> Enemies
     {
@@ -39,6 +40,7 @@ public class EnemyManager : MonoBehaviour {
     void Awake()
     {
         minX = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(Vector3.zero).x;
+        rightEdge = Camera.main.ScreenToWorldPoint(Screen.width * Vector3.right).x;
     }
 	
 	// Update is called once per frame
@@ -67,9 +69,11 @@ public class EnemyManager : MonoBehaviour {
     public void MakeEnemy(int laneNum)
     {
         GameObject temp = Instantiate(Resources.Load(enemyTable[Random.Range(0, numEnemies)])) as GameObject;
+        temp.GetComponent<Enemy>().StartX = rightEdge;
         temp.transform.position = new Vector3(temp.GetComponent<Enemy>().StartX, 0.0f, 0.0f);
         temp.GetComponent<Enemy>().Lane = laneNum;
         temp.transform.parent = this.transform;
+       
         enemies.Add(temp);        
     }
     
