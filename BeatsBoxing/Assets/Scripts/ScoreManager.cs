@@ -71,4 +71,11 @@ public static class ScoreManager {
     {
         score += scoreAdd;
     }
+
+	public static void Reset()
+	{
+		score = 0;
+		speedScale = 0;
+		combo = 0;
+	}
 }

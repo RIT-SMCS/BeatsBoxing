@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
     void Awake () {
         lastSpawnTime = startDelay;
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
-		
+		ScoreManager.Reset();
         
 
     }
