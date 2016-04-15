@@ -43,5 +43,10 @@ public class Attack : MonoBehaviour {
 
 			//Debug.Log("ENEMY HIT"); 
 		}
-	}
+        if (attacking && other.gameObject.CompareTag("Bullet") && other.gameObject.GetComponent<Bullet>().IsReflected == false)
+        {
+            other.gameObject.GetComponent<Bullet>().Velocity *= -1;
+            other.gameObject.GetComponent<Bullet>().IsReflected = true;           
+        }
+    }    
 }

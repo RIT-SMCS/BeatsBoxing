@@ -28,7 +28,7 @@ public class Turret : Enemy {
         base.DoAttackPattern();
         if (bullet == null)
         {
-            bullet = Instantiate(Resources.Load("Bullet")) as GameObject;
+            bullet = Instantiate(Resources.Load("BulletPrefab")) as GameObject;
             bullet.transform.position = this.transform.position;
         }
     }

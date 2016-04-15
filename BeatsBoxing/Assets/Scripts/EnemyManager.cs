@@ -5,8 +5,7 @@ using System.Collections.Generic;
 public class EnemyManager : MonoBehaviour {
 
     public int maxEnemies;
-    public int numEnemies;
-    public GameObject enemyToSpawn;
+    public int numEnemies;    
     List<GameObject> enemies;
     public GameObject player;
     private string[] enemyTable;
@@ -32,7 +31,9 @@ public class EnemyManager : MonoBehaviour {
         enemyTable[4] = "TrackingEnemyPrefab";
         enemyTable[5] = "TrackingEnemyPrefab";
         enemyTable[6] = "TrackingEnemyPrefab";
-        enemyTable[7] = "SpikesPrefab";
+        enemyTable[7] = "TurretEnemyPrefab";
+        enemyTable[8] = "TurretEnemyPrefab";
+        enemyTable[9] = "SpikesPrefab";
     }
 
     void Awake()
