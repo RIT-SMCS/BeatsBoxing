@@ -1,7 +1,7 @@
-###Beats Boxing
+#Beats Boxing
 
 
-Remote Shepherd is a first-person shooter puzzle game where the player must plan each of their actions carefully to complete missions. As part of our capstone class we maintained a [developer's blog](http://remote-shepherd.blogspot.com/) that you can look at to find out more about this game and its production.
+Beats Boxing is a rythmic endless runner where you will beat down 80s action tropes in tune to a fast paced beat. How long can you keep up? The project was done for IGM-590, Casual Game Development at RIT, by the following fabulous individuals.
 
 ## Chris Mercado
 * Engine Architect
