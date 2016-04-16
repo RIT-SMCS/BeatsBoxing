@@ -26,9 +26,7 @@ The project was done for IGM-590, Casual Game Development at RIT in 5 weeks, by 
 * Enemy AI / Generation
 * Game Designer
 
-## [![Sean Maraia] [SeanSite]]
+## [Sean Maraia](http://seanmaraia.me "Sean Maraia")
 * UI Designer & Engineer
 * Mobile Build Lead
 * Game Designer
-
-[SeanSite] : http://seanmaraia.me "Sean Maraia" 
