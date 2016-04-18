@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour {
     public GameObject enemyToSpawn;
     List<GameObject> enemies;
     public GameObject player;
-    private string[] enemyTable;
+    private EnemyTable eTable;
     float minX;
 
 
@@ -20,29 +20,29 @@ public class EnemyManager : MonoBehaviour {
     {
         get { return enemies; }
     }
-    public string[] ETable
+    public EnemyTable ETable
     {
-        get { return enemyTable; }
-        set { enemyTable = value; }
+        get { return eTable; }
+        set { eTable = value; }
     }
 	// Use this for initialization
 	void Start() {        
-        enemies = new List<GameObject>();
-        enemyTable = new string[numEnemies];
-        enemyTable[0] = "BasicEnemyPrefab";
-        enemyTable[1] = "BasicEnemyPrefab";
-        enemyTable[2] = "BasicEnemyPrefab";
-        enemyTable[3] = "BasicEnemyPrefab";
-        enemyTable[4] = "TrackingEnemyPrefab";
-        enemyTable[5] = "TrackingEnemyPrefab";
-        enemyTable[6] = "TrackingEnemyPrefab";
-        enemyTable[7] = "TurretEnemyPrefab";
-        enemyTable[8] = "TurretEnemyPrefab";
-        enemyTable[9] = "SpikesPrefab";
+        enemies = new List<GameObject>();        
+        
     }
 
     void Awake()
     {
+        eTable = new EnemyTable();
+        eTable.Add("BasicEnemyPrefab");
+        eTable.Add("BasicEnemyPrefab");
+        eTable.Add("BasicEnemyPrefab");
+        eTable.Add("TrackingEnemyPrefab");
+        eTable.Add("TrackingEnemyPrefab");
+        eTable.Add("TrackingEnemyPrefab");
+        eTable.Add("TurretEnemyPrefab");
+        eTable.Add("TurretEnemyPrefab");
+        eTable.Add("SpikesPrefab");  
         minX = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(Vector3.zero).x;
     }
 	
@@ -71,7 +71,7 @@ public class EnemyManager : MonoBehaviour {
     //Instantiate an Enemy and add it to list
     public void MakeEnemy(int laneNum)
     {
-        GameObject temp = Instantiate(Resources.Load(enemyTable[Random.Range(0, numEnemies)])) as GameObject;
+        GameObject temp = eTable.CreateRandom();
         Enemy en = temp.GetComponent<Enemy>();
         //set the XVelocity to the appropriate speed
         en.XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
