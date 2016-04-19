@@ -1,0 +1,99 @@
+﻿<MonoDevelopProperties version="2.0">
+  <Property key="MonoDevelop.Core.FirstRun" value="False" />
+  <Property key="MonoDevelop.EnableInstrumentation" value="False" />
+  <Property key="FontProperties" />
+  <Property key="MonoDevelop.Ide.UserInterfaceTheme" value="" />
+  <Property key="MonoDevelop.Ide.UserInterfaceLanguage" value="" />
+  <Property key="MonoDevelop.TextEditor.Document.Document.DefaultDocumentAggregatorProperties" />
+  <Property key="MonoDevelop.Ide.DefaultTargetRuntime" value="__current" />
+  <Property key="MonoDevelop.EnableAutomatedTesting" value="False" />
+  <Property key="MonoDevelop.Debugger.DebuggingService.EnginePriority" value="Mono.Debugger.Soft,Mono.Debugger.Soft.Custom,Mono.Debugger.Soft.AspNet,MonoDevelop.Debugger.Soft.Unity" />
+  <Property key="MonoDevelop.Ide.WorkbenchCompactness" value="Normal" />
+  <Property key="FavoriteRecentFiles">
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  </Property>
+  <Property key="SharpDevelop.Workbench.WorkbenchMemento">
+    <Property key="bounds" value="50, 50, 1820, 930" />
+    <Property key="windowState" value="Maximized" />
+    <Property key="fullscreen" value="False" />
+    <Property key="toolbarStatus">
+      <DockToolbarFrameStatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <version>2</version>
+        <layout id="" />
+        <layout id="Solution" />
+      </DockToolbarFrameStatus>
+    </Property>
+  </Property>
+  <Property key="ToolboxIsInCompactMode" value="False" />
+  <Property key="SharpDevelop.TaskList.ShowErrors" value="True" />
+  <Property key="SharpDevelop.TaskList.ShowWarnings" value="True" />
+  <Property key="SharpDevelop.TaskList.ShowMessages" value="True" />
+  <Property key="Monodevelop.ErrorListColumns" value="TRUE;TRUE;TRUE;TRUE;TRUE;TRUE;TRUE" />
+  <Property key="SharpDevelop.TaskList.OutputViewVisible" value="False" />
+  <Property key="Monodevelop.UserTasksHighPrioColor" value="" />
+  <Property key="Monodevelop.UserTasksNormalPrioColor" value="" />
+  <Property key="Monodevelop.UserTasksLowPrioColor" value="" />
+  <Property key="Monodevelop.TaskList.ActiveView" value="MonoDevelop.Ide.Tasks.CommentTasksView" />
+  <Property key="Monodevelop.TaskListTokens" value="FIXME:2;TODO:1;HACK:1;UNDONE:0" />
+  <Property key="Monodevelop.CommentTasksColumns" value="TRUE;TRUE;TRUE;TRUE" />
+  <Property key="MonoDevelop.Ide.ExtensibleTreeView.Zoom.ProjectPad" value="1" />
+  <Property key="MonoDevelop.Ide.ExtensibleTreeView.Zoom.MonoDevelop.NUnit.TestPad" value="1" />
+  <Property key="MonoDevelop.Core.Gui.CurrentWorkbenchLayout" value="Solution" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.CheckForUpdates" value="True" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.LastCheck" value="04/19/2016 12:19:29" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.UpdateSpanUnit" value="Day" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.UpdateSpanValue" value="1" />
+  <Property key="MonoDevelop.Core.Gui.Dialog.TipOfTheDayView.ShowTipsAtStartup" value="False" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.UpdateLevel" value="Stable" />
+  <Property key="MonoDevelop.Core.LastRunVersion" value="5" />
+  <Property key="MonoDevelop.Core.LastRunRevision" value="0" />
+  <Property key="SharpDevelop.LoadPrevProjectOnStartup" value="True" />
+  <Property key="MonoDevelop.Ide.BuildWithMSBuild" value="False" />
+  <Property key="MonoDevelop.Ide.MSBuildVerbosity" value="Normal" />
+  <Property key="MonoDevelop.GtkCore.ShowNonContainerWarning" value="True" />
+  <Property key="TabIsReindent" value="False" />
+  <Property key="EnableSemanticHighlighting" value="True" />
+  <Property key="AutoInsertMatchingBracket" value="False" />
+  <Property key="SmartSemicolonPlacement" value="False" />
+  <Property key="UnderlineErrors" value="True" />
+  <Property key="IndentStyle" value="Smart" />
+  <Property key="ShowLineNumberMargin" value="True" />
+  <Property key="ShowFoldMargin" value="False" />
+  <Property key="HighlightCaretLine" value="False" />
+  <Property key="EnableSyntaxHighlighting" value="True" />
+  <Property key="HighlightMatchingBracket" value="True" />
+  <Property key="ShowRuler" value="False" />
+  <Property key="FontName" value="Mono 10" />
+  <Property key="ColorScheme" value="Default" />
+  <Property key="DefaultRegionsFolding" value="False" />
+  <Property key="DefaultCommentFolding" value="True" />
+  <Property key="UseViModes" value="False" />
+  <Property key="OnTheFlyFormatting" value="True" />
+  <Property key="HideObsoleteItems" value="True" />
+  <Property key="ControlLeftRightMode" value="MonoDevelop" />
+  <Property key="EnableAnimations" value="True" />
+  <Property key="UseAntiAliasing" value="True" />
+  <Property key="EnableHighlightUsages" value="False" />
+  <Property key="DrawIndentationMarkers" value="False" />
+  <Property key="LineEndingConversion" value="Ask" />
+  <Property key="ShowWhitespaces" value="Never" />
+  <Property key="WrapLines" value="False" />
+  <Property key="EnableQuickDiff" value="False" />
+  <Property key="MonoDevelop.AnalysisCore.AnalysisEnabled" value="False" />
+  <Property key="ScrollBar.Mode" value="Overview" />
+  <Property key="MonoDevelop.Ide.NewShowMessageBubbles" value="ForErrorsAndWarnings" />
+  <Property key="SharpDevelop.LoadDocumentProperties" value="True" />
+  <Property key="EnableCodeCompletion" value="True" />
+  <Property key="EnableParameterInsight" value="True" />
+  <Property key="EnableAutoCodeCompletion" value="True" />
+  <Property key="XmlEditor.AddIn.Options">
+    <Property key="ShowSchemaAnnotation" value="False" />
+    <Property key="AutoCompleteElements" value="False" />
+    <Property key="AutoInsertFragment" value="False" />
+  </Property>
+  <Property key="MonoDevelop.DesignerSupport.ClassOutline.IsGrouped" value="False" />
+  <Property key="MonoDevelop.DesignerSupport.ClassOutline.IsSorted" value="False" />
+  <Property key="MonoDevelop.DesignerSupport.ClassOutline.GroupOrder" value="" />
+  <Property key="SharpDevelop.CreateBackupCopy" value="False" />
+  <Property key="AutoFormatDocumentOnSave" value="False" />
+</MonoDevelopProperties>

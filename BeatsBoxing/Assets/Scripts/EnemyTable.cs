@@ -9,11 +9,13 @@ public class EnemyTable : MonoBehaviour {
     public List<string> EnemyTypes
     {
         get { return enemyTypes; }
+		set { enemyTypes = value; }
     }
 
 	// Use this for initialization
 	void Start () {
         enemyTypes = new List<string>();
+        Debug.Log(enemyTypes);
 	}
 	
 	// Update is called once per frame
@@ -35,7 +37,7 @@ public class EnemyTable : MonoBehaviour {
     }
     public GameObject CreateRandom()
     {
-        GameObject temp = Instantiate(Resources.Load(enemyTypes[Random.Range(0, enemyTypes.Count - 1)])) as GameObject;
+        GameObject temp = Instantiate(Resources.Load(enemyTypes[Random.Range(0, enemyTypes.Count)])) as GameObject;
         return temp;
     }
 }
