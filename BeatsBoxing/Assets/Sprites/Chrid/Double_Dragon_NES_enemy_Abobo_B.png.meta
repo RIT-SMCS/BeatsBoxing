@@ -1,0 +1,133 @@
+fileFormatVersion: 2
+guid: 80fe2f96930388c47875889b2a8be639
+timeCreated: 1461087371
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Double_Dragon_NES_enemy_Abobo_B_0
+    21300002: Double_Dragon_NES_enemy_Abobo_B_1
+    21300004: Double_Dragon_NES_enemy_Abobo_B_2
+    21300006: Double_Dragon_NES_enemy_Abobo_B_3
+    21300008: Double_Dragon_NES_enemy_Abobo_B_4
+    21300010: Double_Dragon_NES_enemy_Abobo_B_5
+    21300012: Double_Dragon_NES_enemy_Abobo_B_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Double_Dragon_NES_enemy_Abobo_B_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 137
+        width: 63
+        height: 60
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Double_Dragon_NES_enemy_Abobo_B_1
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 78
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Double_Dragon_NES_enemy_Abobo_B_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 79
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Double_Dragon_NES_enemy_Abobo_B_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Double_Dragon_NES_enemy_Abobo_B_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 4
+        width: 31
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Double_Dragon_NES_enemy_Abobo_B_5
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 109
+        width: 61
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Double_Dragon_NES_enemy_Abobo_B_6
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 71
+        width: 29
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
