@@ -55,6 +55,11 @@ public class BeatManager : MonoBehaviour {
 
 	}
 
+    public float TimePerBeat
+    {
+        get { return m_timePerBeat; }
+    }
+
 	// Use this for initialization
 	void Start () {
 		m_timeOfNextBeat = m_BPM_Offset + m_timePerBeat;
