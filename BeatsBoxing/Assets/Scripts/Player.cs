@@ -39,8 +39,6 @@ public class Player : LaneActor
 		animationTimer = 0.0f; 
 		animationState = true; 
 		ANIMATIONSPEED = 0.5f;
-
-        BeatManager.Instance.ExecuteOnBeat += DoAttackPattern;
     }
 
     public override void Update()
