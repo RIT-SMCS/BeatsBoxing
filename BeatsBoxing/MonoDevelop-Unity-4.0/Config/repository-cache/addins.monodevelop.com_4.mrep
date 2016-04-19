@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Repository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>MonoDevelop Add-in Repository (Beta channel)</Name>
+  <Url>http://addins.monodevelop.com/Beta/Win32/4.0.1/root.mrep</Url>
+  <Addin>
+    <Url>CommodiFusion.SlightlySharper-4.0.1.mpack</Url>
+    <Addin>
+      <Id>SlightlySharper</Id>
+      <Namespace>CommodiFusion</Namespace>
+      <Name>SlightlySharper</Name>
+      <Version>4.0.1</Version>
+      <BaseVersion />
+      <Author>CommodiFusion Ltd</Author>
+      <Copyright>BSD</Copyright>
+      <Url />
+      <Description>A keybinding add-in to make MonoDevelop behave slightly more like JetBrains Resharper or IDEA</Description>
+      <Category>IDE extensions</Category>
+      <Dependencies>
+        <AddinDependency>
+          <AddinId>::MonoDevelop.Ide</AddinId>
+          <Version>4.0</Version>
+        </AddinDependency>
+        <AddinDependency>
+          <AddinId>::MonoDevelop.Core</AddinId>
+          <Version>4.0</Version>
+        </AddinDependency>
+      </Dependencies>
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">4228</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+  <Addin>
+    <Url>D-Debugger-DbgEng-0.0.4.mpack</Url>
+    <Addin>
+      <Id>D-Debugger-DbgEng</Id>
+      <Namespace />
+      <Name>D Language Binding DbgEng Debugger</Name>
+      <Version>0.0.4</Version>
+      <BaseVersion />
+      <Author>Michael Crompton, Alexander Bothe</Author>
+      <Copyright>Copyright ©  2011</Copyright>
+      <Url>http://mono-d.alexanderbothe.com/</Url>
+      <Description>D Debugger support for Mono-D using DbgEng</Description>
+      <Category>Debugging</Category>
+      <Dependencies />
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">2900198</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+  <Addin>
+    <Url>GlassAddin.GlassAddin-1.1.mpack</Url>
+    <Addin>
+      <Id>GlassAddin</Id>
+      <Namespace>GlassAddin</Namespace>
+      <Name>Google Glass Extension</Name>
+      <Version>1.1</Version>
+      <BaseVersion />
+      <Author>ChrisNTR</Author>
+      <Copyright>ChrisNTR</Copyright>
+      <Url>http://chrisntr.github.io/</Url>
+      <Description>Templates and helpers for Google Glass development.</Description>
+      <Category>Mobile Development</Category>
+      <Dependencies />
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">15230</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+  <Addin>
+    <Url>MonoDevelop.HaxeBinding-0.4.1.mpack</Url>
+    <Addin>
+      <Id>HaxeBinding</Id>
+      <Namespace>MonoDevelop</Namespace>
+      <Name>Haxe Language Binding</Name>
+      <Version>0.4.2</Version>
+      <BaseVersion />
+      <Author>Kharvat Heorhiy</Author>
+      <Copyright>MIT X11</Copyright>
+      <Url />
+      <Description>Haxe Language Binding</Description>
+      <Category>Language bindings</Category>
+      <Dependencies />
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">62786</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+  <Addin>
+    <Url>MonoDevelop.Refactoring.Unity-4.2.2.mpack</Url>
+    <Addin>
+      <Id>MonoDevelop.Refactoring.Unity</Id>
+      <Namespace />
+      <Name>MonoDevelop.Refactoring.Unity</Name>
+      <Version>4.2.2</Version>
+      <BaseVersion />
+      <Author>makarov@alternativaplatform.com</Author>
+      <Copyright>Copyrigth (c) 2014 AlternativaPlatform.com</Copyright>
+      <Url>https://github.com/sergerus/MonoDevelop.Refactoring.Unity</Url>
+      <Description>Tracks file operations and handle Unity3d meta files.</Description>
+      <Category>IDE extensions</Category>
+      <Dependencies />
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">6136</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+  <Addin>
+    <Url>MonoDevelop.ThoseMissingFeatures-0.1.mpack</Url>
+    <Addin>
+      <Id>ThoseMissingFeatures</Id>
+      <Namespace>MonoDevelop</Namespace>
+      <Name>Those Missing Features</Name>
+      <Version>0.1</Version>
+      <BaseVersion />
+      <Author>Diego Giacomelli</Author>
+      <Copyright>MIT/X11</Copyright>
+      <Url>http://github.com/giacomelli/MonoDevelop.ThoseMissingFeatures</Url>
+      <Description>Those missing features we would like to see in MonoDevelop.</Description>
+      <Category>IDE extensions</Category>
+      <Dependencies />
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">3847</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+  <Addin>
+    <Url>Unity.Utilities-4.0.mpack</Url>
+    <Addin>
+      <Id>Unity.Utilities</Id>
+      <Namespace />
+      <Name>Utilities for use with Unity</Name>
+      <Version>4.0</Version>
+      <BaseVersion />
+      <Author>Clifford Roche, Levi Bard</Author>
+      <Copyright>MIT/X11</Copyright>
+      <Url>http://github.com/cmroche/MonoDevelop.Debugger.Soft.Unity</Url>
+      <Description>This addin adds support for shaderlab, cginc, and glsl syntax highlighting. Easy access to Unity Script Reference, and Unity behaviour templates.</Description>
+      <Category>Unity</Category>
+      <Dependencies />
+      <OptionalDependencies />
+      <Properties>
+        <Property name="DownloadSize">7155</Property>
+      </Properties>
+    </Addin>
+  </Addin>
+</Repository>

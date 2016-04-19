@@ -23,7 +23,7 @@ public class Player : LaneActor
 	public float animationTimer;
 	bool animationState; 
 	//Lower this number to increase the speed of the walk animation
-	public float ANIMATIONSPEED; 
+	public float ANIMATIONSPEED;    
     
 	void Awake()
     {
@@ -38,7 +38,9 @@ public class Player : LaneActor
 		source = GetComponent<AudioSource> (); 
 		animationTimer = 0.0f; 
 		animationState = true; 
-		ANIMATIONSPEED = 0.5f; 
+		ANIMATIONSPEED = 0.5f;
+
+        BeatManager.Instance.ExecuteOnBeat += DoAttackPattern;
     }
 
     public override void Update()
