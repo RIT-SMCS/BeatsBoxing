@@ -4,11 +4,9 @@ using System;
 
 public class Player : LaneActor
 {
-    float age = 0;
-    bool knockingBack = false;
+   
 
-    Vector3 baseScale;
-    public Vector3 startingPos;
+   
 	private int attackTimer; 
 	public AudioClip punch; //the actual punch sound
 	public AudioClip switchLane; //the switching lanes sound
@@ -25,16 +23,23 @@ public class Player : LaneActor
 	//Lower this number to increase the speed of the walk animation
 	public float ANIMATIONSPEED; 
     
-	void Awake()
+	public override void Awake()
     {
+
+        base.Awake();
+
         XVelocity = -1.0f;
         Health = 5;
         Lane = 5;
 		attackTimer = -1;
-        baseScale = transform.localScale;
-        startingPos = transform.position;
-		//audio setup
-		audioVol = 3.0f; 
+
+        transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
+
+        knockBackVector = new Vector3(2, 0, 0);
+
+
+    //audio setup
+    audioVol = 3.0f; 
 		source = GetComponent<AudioSource> (); 
 		animationTimer = 0.0f; 
 		animationState = true; 
@@ -46,15 +51,15 @@ public class Player : LaneActor
         
 
         //PLAYER CONTROL HANDLING
-		if (Input.GetKeyDown(KeyCode.W) && !knockingBack)
+		if (Input.GetKeyDown(KeyCode.W) && !knockingBack && !switchingLanes)
         {
             Lane++;
-			source.PlayOneShot (switchLane, audioVol); 
+            source.PlayOneShot (switchLane, audioVol); 
         }
-        if (Input.GetKeyDown(KeyCode.S) && !knockingBack)
+        if (Input.GetKeyDown(KeyCode.S) && !knockingBack && !switchingLanes)
         {
             Lane--;
-			source.PlayOneShot (switchLane, audioVol); 
+            source.PlayOneShot (switchLane, audioVol); 
         }
 		if (Input.GetKeyDown (KeyCode.Space) && attackTimer <= 0) 
 		{
@@ -79,7 +84,12 @@ public class Player : LaneActor
             Knockback();
         }
 
-		animationTimer += Time.deltaTime * ScoreManager.SpeedScale; 
+        if(switchingLanes)
+        {
+            LaneSwitch();
+        }
+
+        animationTimer += Time.deltaTime * ScoreManager.SpeedScale; 
 		if (animationTimer >= 0.5f) 
 		{
 			animationTimer = 0.0f; 
@@ -122,25 +132,12 @@ public class Player : LaneActor
         
 		if (Camera.main.GetComponent<Camera> ().WorldToScreenPoint (startingPos - new Vector3 (2, 0, 0)).x >= 100)
         {
-			age = 0.0f;
+            dtKnockBack = 0.0f;
 			this.knockingBack = true;
 			this.startingPos = transform.position;
+            startingPos.y = Mathf.Round(startingPos.y);
 		}
     }
 
-    void Knockback()
-    {
-        age += Time.deltaTime;
-        float duration = 1.0f;
-        float t = Mathf.Min(age, duration) / duration;
-        transform.position = Vector3.Lerp(startingPos, startingPos - new Vector3(2 ,0, 0), t);
-        float scaleFactor = 1 + Mathf.Sin(t * Mathf.PI);
-        transform.localScale = baseScale * scaleFactor; 
-        if (age > duration)
-        {
-            knockingBack = false;
-			this.startingPos = transform.position;
-        }
-		
-    }
+   
 }
