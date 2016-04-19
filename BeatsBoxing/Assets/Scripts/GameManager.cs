@@ -17,14 +17,15 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float spawnRate;
 
     private float lastSpawnTime;
+    private bool toSpawnOnBeat = false;
 
     // Use this for initialization
     void Awake () {
         lastSpawnTime = startDelay;
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		ScoreManager.Reset();
-        
 
+        BeatManager.Instance.ExecuteOnBeat += SpawnEnemies;
     }
 	
 	// Update is called once per frame
@@ -32,12 +33,14 @@ public class GameManager : MonoBehaviour {
         if (Time.time >= lastSpawnTime + spawnRate / (0.9f * ScoreManager.SpeedScale)) 
         {
             lastSpawnTime = Time.time;
-            SpawnEnemies();
+            //SpawnEnemies();
+            toSpawnOnBeat = true;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SpawnEnemies();
+            //SpawnEnemies();
+            toSpawnOnBeat = true;
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -51,7 +54,11 @@ public class GameManager : MonoBehaviour {
 
     void SpawnEnemies()
     {
-        eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f,6.0f)));      
+        if (toSpawnOnBeat)
+        {
+            eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f, 6.0f)));
+            toSpawnOnBeat = false;
+        }
     }
 
 
