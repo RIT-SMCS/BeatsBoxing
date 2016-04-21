@@ -14,6 +14,8 @@ public abstract class LaneActor : MonoBehaviour {
 
     protected float dtLaneSwitch = 0;
     protected bool switchingLanes = false;
+    protected float laneSwitchDuration = 0.25f;
+
 
     protected float dtKnockBack = 0;
     protected bool knockingBack = false;
@@ -124,11 +126,10 @@ public abstract class LaneActor : MonoBehaviour {
     public void LaneSwitch()
     {
         dtLaneSwitch += Time.deltaTime;
-        float duration = 0.25f;
-        float t = Mathf.Min(dtLaneSwitch, duration) / duration;
+        float t = Mathf.Min(dtLaneSwitch, laneSwitchDuration) / laneSwitchDuration;
         Vector3 displacement = new Vector3(0, directionToMove, 0);
         transform.position = Vector3.Lerp(startingPos, startingPos + displacement * LANEHEIGHT, t);
-        if (dtLaneSwitch > duration)
+        if (dtLaneSwitch > laneSwitchDuration)
         {
             switchingLanes = false;
             this.startingPos = transform.position;

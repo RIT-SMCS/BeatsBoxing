@@ -32,6 +32,7 @@ public class Player : LaneActor
         Health = 5;
         Lane = 0;
 		attackTimer = -1;
+        laneSwitchDuration = 0.1f;
 
         transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
 
