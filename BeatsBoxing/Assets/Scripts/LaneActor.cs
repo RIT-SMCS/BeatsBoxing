@@ -27,6 +27,8 @@ public abstract class LaneActor : MonoBehaviour {
 
     protected int directionToMove = 0;
 
+    protected bool _isReady = false;
+
     private SpriteRenderer _renderer;
 
     public Color Color
@@ -42,29 +44,46 @@ public abstract class LaneActor : MonoBehaviour {
     {
         get { return _currentLane; }
         set {
-            directionToMove = value - _currentLane;
-            _currentLane = value;
-            if (_currentLane < 0) {
-                _currentLane = 0;
-                directionToMove = 0;
-            }
-            else if (_currentLane >= MAX_LANES) {
-                _currentLane = MAX_LANES-1;
-                directionToMove = 0;
-            }
-            //set the y value of the transform
-            //transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
+            if (_isReady)
+            {
+                directionToMove = value - _currentLane;
+                _currentLane = value;
+                if (_currentLane < 0)
+                {
+                    _currentLane = 0;
+                    directionToMove = 0;
+                }
+                else if (_currentLane >= MAX_LANES)
+                {
+                    _currentLane = MAX_LANES - 1;
+                    directionToMove = 0;
+                }
+                //set the y value of the transform
+                
 
-            if(directionToMove != 0)
-            {
-                switchingLanes = true;
-                startingPos = transform.position;
-                dtLaneSwitch = 0.0f;
-            } else
-            {
-                switchingLanes = false;
+                if (directionToMove != 0)
+                {
+                    switchingLanes = true;
+                    startingPos = transform.position;
+                    dtLaneSwitch = 0.0f;
+                }
+                else
+                {
+                    switchingLanes = false;
+                }
+            } else {
+                _currentLane = value;
+                if (_currentLane < 0)
+                {
+                    _currentLane = 0;
+                }
+                else if (_currentLane >= MAX_LANES)
+                {
+                    _currentLane = MAX_LANES - 1;
+                }
+
+                transform.position = new Vector3(transform.position.x, 1.0f * (-3 + _currentLane), transform.position.z);
             }
-            Debug.Log( this.name + " : " + directionToMove);
         }
     }
 
@@ -95,6 +114,11 @@ public abstract class LaneActor : MonoBehaviour {
             this.startingPos = transform.position;
         }
 
+    }
+
+    public void ReadyUp()
+    {
+        _isReady = true;
     }
 
     public void LaneSwitch()

@@ -30,16 +30,18 @@ public class Player : LaneActor
 
         XVelocity = -1.0f;
         Health = 5;
-        Lane = 5;
+        Lane = 0;
 		attackTimer = -1;
 
         transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
 
         knockBackVector = new Vector3(2, 0, 0);
 
+        ReadyUp(); 
 
-    //audio setup
-    audioVol = 3.0f; 
+
+        //audio setup
+        audioVol = 3.0f; 
 		source = GetComponent<AudioSource> (); 
 		animationTimer = 0.0f; 
 		animationState = true; 

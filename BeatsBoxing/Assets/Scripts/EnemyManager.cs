@@ -89,6 +89,7 @@ public class EnemyManager : MonoBehaviour {
         en.BubbleDuration = timeToTravel;
         temp.transform.position = new Vector3((en.StartX = attackPositionX + deltaX), 0.0f, 0.0f);
         en.Lane = laneNum;
+        en.ReadyUp();
         temp.transform.parent = this.transform;
         enemies.Add(temp);        
     }
