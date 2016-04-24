@@ -78,6 +78,7 @@ public class Player : LaneActor
         {
             Knockback();
         }
+	
 
 		animationTimer += Time.deltaTime * ScoreManager.SpeedScale; 
 		if (animationTimer >= 0.5f) 
