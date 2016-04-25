@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
         lastSpawnTime = startDelay;
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		ScoreManager.Reset();
-        
+        eManager.Reset();      
 
     }
 	

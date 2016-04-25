@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour {
 	// Use this for initialization
 	void Start() {        
         enemies = new List<GameObject>();
-        Debug.Log(eTable);
+        Debug.Log(eTable.EnemyTypes);
         //eTable.Add("BasicEnemyPrefab");
         //eTable.Add("BasicEnemyPrefab");
         //eTable.Add("BasicEnemyPrefab");
@@ -94,7 +94,7 @@ public class EnemyManager : MonoBehaviour {
 			//find the time it will take the enemy to reach the hitbox
 			float timeToTravel = deltaX / -en.XVelocity;
 			//set the bubble duration to disappear the moment it reaches the hitbox
-			en.BubbleDuration = timeToTravel;
+			//en.BubbleDuration = timeToTravel;
 			temp.transform.position = new Vector3 ((en.StartX = attackPositionX + deltaX), 0.0f, 0.0f);
 			en.Lane = laneNum;
 			temp.transform.parent = this.transform;
@@ -107,5 +107,19 @@ public class EnemyManager : MonoBehaviour {
     {
         enemies.Remove(e);
         Destroy(e);
+    }
+    public void Reset()
+    {
+        eTable = FindObjectOfType<EnemyTable>();
+
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
+        eTable.Add("WallPrefab");
     }
 }

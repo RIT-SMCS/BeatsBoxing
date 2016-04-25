@@ -39,5 +39,5 @@ public class EnemyTable : MonoBehaviour {
     {
         GameObject temp = Instantiate(Resources.Load(enemyTypes[Random.Range(0, enemyTypes.Count)])) as GameObject;
         return temp;
-    }
+    }    
 }
