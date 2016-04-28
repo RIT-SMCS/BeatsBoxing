@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class EnemyTable : MonoBehaviour {
 
-    private List<string> enemyTypes;
+    private Dictionary<string, float> enemyTypes;
 
-    public List<string> EnemyTypes
+    public Dictionary<string, float> EnemyTypes
     {
         get { return enemyTypes; }
 		set { enemyTypes = value; }
@@ -14,7 +14,7 @@ public class EnemyTable : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        enemyTypes = new List<string>();
+        enemyTypes = new Dictionary<string, float>();
         Debug.Log(enemyTypes);
 	}
 	
@@ -23,13 +23,17 @@ public class EnemyTable : MonoBehaviour {
 	
 	}
 
-    public void Add(string type)
+    public void SetWeight(string enemy, float weight)
     {
-        enemyTypes.Add(type);
+        enemyTypes()
     }
-    public void Remove(int i)
+    public void Add(string type, float weight)
     {
-        enemyTypes.RemoveAt(i);
+        enemyTypes.Add(type, weight);
+    }
+    public void Remove(string enemy)
+    {
+        enemyTypes.Remove(enemy);
     }
     public void Clear()
     {

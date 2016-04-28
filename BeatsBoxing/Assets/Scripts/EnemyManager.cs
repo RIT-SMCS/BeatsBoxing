@@ -28,24 +28,15 @@ public class EnemyManager : MonoBehaviour {
 	void Start() {        
         enemies = new List<GameObject>();
         Debug.Log(eTable.EnemyTypes);
-        //eTable.Add("BasicEnemyPrefab");
-        //eTable.Add("BasicEnemyPrefab");
-        //eTable.Add("BasicEnemyPrefab");
-        //eTable.Add("TrackingEnemyPrefab");
-        //eTable.Add("TrackingEnemyPrefab");
-        //eTable.Add("TrackingEnemyPrefab");
-        //eTable.Add("TurretEnemyPrefab");
-        //eTable.Add("TurretEnemyPrefab");
-        //eTable.Add("SpikesPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
+        eTable.Add("BasicEnemyPrefab");
+        eTable.Add("BasicEnemyPrefab");
+        eTable.Add("BasicEnemyPrefab");
+        eTable.Add("TrackingEnemyPrefab");
+        eTable.Add("TrackingEnemyPrefab");
+        eTable.Add("TrackingEnemyPrefab");
+        eTable.Add("TurretEnemyPrefab");
+        eTable.Add("TurretEnemyPrefab");
+        eTable.Add("SpikesPrefab");        
     }
 	
 	void Awake()
@@ -109,17 +100,7 @@ public class EnemyManager : MonoBehaviour {
         Destroy(e);
     }
     public void Reset()
-    {
-        eTable = FindObjectOfType<EnemyTable>();
-
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
-        eTable.Add("WallPrefab");
+    {     
+           
     }
 }
