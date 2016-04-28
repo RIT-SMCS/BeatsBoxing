@@ -3,13 +3,21 @@ using System.Collections;
 
 public abstract class Enemy : LaneActor {
 
-    protected enum State { Attacking, Tracking};
+    protected enum State { AttackStartup, AttackActive, Moving, Idle, Tracking};
         
     protected float startX;
     protected State currentState;
-    protected GameObject player;
+    protected State nextStateOnBeat;
+    protected Player player;
 
     private float bubbleDuration = 2.0f;
+
+    protected float minimumDistance = -1000.0f;
+    protected int attackBeatCooldown = 1;
+
+    protected int currentStateBeatCount = 0;
+
+    protected int idleBeats = 2;
     public float BubbleDuration
     {
         get { return bubbleDuration; }
@@ -27,15 +35,71 @@ public abstract class Enemy : LaneActor {
 	// Use this for initialization
 	public virtual void Awake () {
         
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        currentState = State.Moving;
+        nextStateOnBeat = currentState;
 
+        BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;
     }
 	
 	// Update is called once per frame
 	public override void Update () {
         //this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
         base.Update();
-    }  
+        switch (currentState)
+        {
+            case State.Idle: Idle();
+                break;
+            case State.Moving: Move();
+                break;
+            case State.Tracking: Track();
+                break;
+            case State.AttackStartup: AttackStartup();
+                break;
+            case State.AttackActive: AttackActive();
+                break;
+        }
+    }
+
+    protected virtual void Idle() { }
+    protected virtual void Move() {
+        if (transform.position.x - player.transform.position.x > minimumDistance)
+        {
+            this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+        }
+        else
+        {
+            nextStateOnBeat = State.AttackStartup;
+        }
+        
+        
+    }
+    protected virtual void Track() {
+        if (BeatManager.Instance.IsOnBeat)
+        {
+            this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);
+        }
+        Move();
+        //currentState = State.Moving;
+    }
+
+    protected abstract void AttackStartup();
+    protected abstract void AttackActive();
+
+    private void UpdateStateOnBeat()
+    {
+        if (currentState != nextStateOnBeat)
+        {
+            currentState = nextStateOnBeat;
+            nextStateOnBeat = currentState;
+            currentStateBeatCount = 0;
+        }
+        else
+        {
+            ++currentStateBeatCount;
+        }
+    }
+
 
     public override void DoAttackPattern()
     {
