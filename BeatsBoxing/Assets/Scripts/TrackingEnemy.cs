@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class TrackingEnemy : Enemy {
 
@@ -13,12 +14,16 @@ public class TrackingEnemy : Enemy {
         _currentLane = 0;
         Lane = _currentLane;
         currentState = State.Tracking;
+        nextStateOnBeat = currentState;
         attackRange = 2;
         transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
+        minimumDistance = 3.2f;
     }
 	
 	// Update is called once per frame
 	public override void Update () {
+        base.Update();
+        /*
         if(currentState == State.Tracking)
         {
             int playerLane = player.GetComponent<Player>().Lane;
@@ -45,10 +50,20 @@ public class TrackingEnemy : Enemy {
         }
 
         base.Update();
+        */
 	}
 
     public override void DoAttackPattern()
-    {
+    {   
         base.DoAttackPattern();        
+    }
+    /// <summary>
+    /// TODO throw a ninja star
+    /// </summary>
+    protected override void AttackActive()
+    {
+        ShootBullet();
+        currentState = State.Idle;
+        nextStateOnBeat = State.Tracking;
     }
 }

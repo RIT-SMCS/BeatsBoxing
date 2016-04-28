@@ -86,7 +86,7 @@ public class EnemyManager : MonoBehaviour {
         //find the time it will take the enemy to reach the hitbox
         float timeToTravel = deltaX / -en.XVelocity;
         //set the bubble duration to disappear the moment it reaches the hitbox
-        en.BubbleDuration = timeToTravel;
+        //en.BubbleDuration = timeToTravel;
         temp.transform.position = new Vector3((en.StartX = attackPositionX + deltaX), 0.0f, 0.0f);
         en.Lane = laneNum;
         en.ReadyUp();

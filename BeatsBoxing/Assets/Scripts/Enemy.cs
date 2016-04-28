@@ -6,6 +6,7 @@ public abstract class Enemy : LaneActor {
     protected enum State { AttackStartup, AttackActive, Moving, Idle, Tracking};
         
     protected float startX;
+    [SerializeField]
     protected State currentState;
     protected State nextStateOnBeat;
     protected Player player;
@@ -18,6 +19,8 @@ public abstract class Enemy : LaneActor {
     protected int currentStateBeatCount = 0;
 
     protected int idleBeats = 2;
+
+    protected GameObject bullet;
     public float BubbleDuration
     {
         get { return bubbleDuration; }
@@ -33,7 +36,8 @@ public abstract class Enemy : LaneActor {
     }
 
 	// Use this for initialization
-	public virtual void Awake () {
+	public override void Awake () {
+        base.Awake();
         
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         currentState = State.Moving;
@@ -46,6 +50,7 @@ public abstract class Enemy : LaneActor {
 	public override void Update () {
         //this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
         base.Update();
+        
         switch (currentState)
         {
             case State.Idle: Idle();
@@ -65,7 +70,7 @@ public abstract class Enemy : LaneActor {
     protected virtual void Move() {
         if (transform.position.x - player.transform.position.x > minimumDistance)
         {
-            this.transform.position += new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+            this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
         }
         else
         {
@@ -80,10 +85,13 @@ public abstract class Enemy : LaneActor {
             this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);
         }
         Move();
-        //currentState = State.Moving;
     }
 
-    protected abstract void AttackStartup();
+    protected virtual void AttackStartup()
+    {
+        BubbleDuration = BeatManager.Instance.TimePerBeat;
+        nextStateOnBeat = State.AttackActive;
+    }
     protected abstract void AttackActive();
 
     private void UpdateStateOnBeat()
@@ -127,5 +135,14 @@ public abstract class Enemy : LaneActor {
         temp.transform.parent = transform;
         temp.transform.localPosition = new Vector3(0, 0, 1);
         temp.GetComponent<TelegraphAttackBubble>().duration = duration;
-    }      
+    }
+
+    protected void ShootBullet()
+    {
+        if (bullet == null || true)
+        {
+            bullet = Instantiate(Resources.Load("BulletPrefab")) as GameObject;
+            bullet.transform.position = this.transform.position;
+        }
+    }
 }

@@ -151,7 +151,11 @@ public abstract class LaneActor : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
-        this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+        //this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
+        if (switchingLanes)
+        {
+            LaneSwitch();
+        }
     }
 
     public abstract void DoAttackPattern();

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Spikes : Enemy {
 
@@ -11,7 +12,7 @@ public class Spikes : Enemy {
         _xVelocity = -1.0f;
         _currentLane = 0;
         Lane = _currentLane;
-        currentState = State.Attacking;
+        currentState = State.Moving;
     }
 
     // Update is called once per frame
@@ -23,5 +24,10 @@ public class Spikes : Enemy {
     public override void DoAttackPattern()
     {
         base.DoAttackPattern();
+    }
+
+    protected override void AttackActive()
+    {
+        currentState = State.Moving;
     }
 }
