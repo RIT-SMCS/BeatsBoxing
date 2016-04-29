@@ -55,6 +55,11 @@ public class BeatManager : MonoBehaviour {
 
 	}
 
+    public bool IsOnBeat
+    {
+        get { return m_isOnBeat; }
+    }
+
     public float TimePerBeat
     {
         get { return m_timePerBeat; }
