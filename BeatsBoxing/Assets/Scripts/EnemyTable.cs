@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EnemyTable : MonoBehaviour {
 
-    private Dictionary<string, float> enemyTypes;
+    private Dictionary<string, float> enemyTypes;    
 
     public Dictionary<string, float> EnemyTypes
     {
@@ -25,7 +25,7 @@ public class EnemyTable : MonoBehaviour {
 
     public void SetWeight(string enemy, float weight)
     {
-        enemyTypes()
+        enemyTypes[enemy] = weight;
     }
     public void Add(string type, float weight)
     {
@@ -41,7 +41,18 @@ public class EnemyTable : MonoBehaviour {
     }
     public GameObject CreateRandom()
     {
-        GameObject temp = Instantiate(Resources.Load(enemyTypes[Random.Range(0, enemyTypes.Count)])) as GameObject;
+        string enemy;
+        float totalWeight = 0;
+        
+        foreach(KeyValuePair<string, float> e in enemyTypes)
+        {
+            totalWeight += e.Value;
+        }
+         
+        float randomWeight = Random.Range(0,totalWeight);
+
+        //GameObject temp = Instantiate(Resources.Load(enemyTypes[Random.Range(0, enemyTypes.Count)])) as GameObject;
+        GameObject temp = new GameObject();
         return temp;
     }    
 }
