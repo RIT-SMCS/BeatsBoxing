@@ -14,6 +14,7 @@ public abstract class Enemy : LaneActor {
     private float bubbleDuration = 2.0f;
 
     protected float minimumDistance = -1000.0f;
+    protected float minimumEnemyFollowDistance = -1000.0f;
     protected int attackBeatCooldown = 1;
 
     protected int currentStateBeatCount = 0;
@@ -68,7 +69,12 @@ public abstract class Enemy : LaneActor {
 
     protected virtual void Idle() { }
     protected virtual void Move() {
-        if (transform.position.x - player.transform.position.x > minimumDistance)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position+Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
+        if (hit.transform != null)
+        {
+            Debug.DrawLine(transform.position, hit.transform.position, Color.red);
+        }
+        if (transform.position.x - player.transform.position.x > minimumDistance || hit.transform == null || hit.transform.tag != "Enemy" || hit.distance > minimumEnemyFollowDistance)
         {
             this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
         }
@@ -80,7 +86,13 @@ public abstract class Enemy : LaneActor {
         
     }
     protected virtual void Track() {
-        if (BeatManager.Instance.IsOnBeat)
+        RaycastHit2D upHit = Physics2D.Raycast(transform.position + Vector3.up * transform.GetComponent<Collider2D>().bounds.extents.y, Vector2.up);
+        //if (hit.transform != null)
+        //{
+        //    Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
+        //    Debug.DrawRay(transform.position, Vector2.up); 
+        //}
+        if (BeatManager.Instance.IsOnBeat && upHit.transform == null)
         {
             this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);
         }
@@ -89,8 +101,11 @@ public abstract class Enemy : LaneActor {
 
     protected virtual void AttackStartup()
     {
-        BubbleDuration = BeatManager.Instance.TimePerBeat;
-        nextStateOnBeat = State.AttackActive;
+        if (BeatManager.Instance.IsOnBeat)
+        {
+            BubbleDuration = BeatManager.Instance.TimePerBeat;
+            nextStateOnBeat = State.AttackActive;
+        }
     }
     protected abstract void AttackActive();
 

@@ -18,6 +18,7 @@ public class TrackingEnemy : Enemy {
         attackRange = 2;
         transform.position = new Vector3(transform.position.x, 1.0f * (-3 + Lane), transform.position.z);
         minimumDistance = 3.2f;
+        minimumEnemyFollowDistance = 3.0f;
     }
 	
 	// Update is called once per frame

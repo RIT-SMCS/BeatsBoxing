@@ -8,6 +8,7 @@ public class BackgroundPreview : MonoBehaviour {
     public int Width, Height;
     public Sprite TileSprite;
     public bool ToUpdate = false;
+
     // Use this for initialization
     void OnValidate()
     {
