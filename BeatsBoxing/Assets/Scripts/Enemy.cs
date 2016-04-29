@@ -69,12 +69,12 @@ public abstract class Enemy : LaneActor {
 
     protected virtual void Idle() { }
     protected virtual void Move() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position+Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position+Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left, minimumEnemyFollowDistance);
         if (hit.transform != null)
         {
-            Debug.DrawLine(transform.position, hit.transform.position, Color.red);
+            Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
         }
-        if (transform.position.x - player.transform.position.x > minimumDistance || hit.transform == null || hit.transform.tag != "Enemy" || hit.distance > minimumEnemyFollowDistance)
+        if (transform.position.x - player.transform.position.x > minimumDistance || hit.transform == null || hit.transform.tag != "Enemy" || hit.distance >= minimumEnemyFollowDistance)
         {
             this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
         }
@@ -86,6 +86,7 @@ public abstract class Enemy : LaneActor {
         
     }
     protected virtual void Track() {
+        Move();
         RaycastHit2D upHit = Physics2D.Raycast(transform.position + Vector3.up * transform.GetComponent<Collider2D>().bounds.extents.y, Vector2.up);
         //if (hit.transform != null)
         //{
@@ -96,7 +97,7 @@ public abstract class Enemy : LaneActor {
         {
             this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);
         }
-        Move();
+        
     }
 
     protected virtual void AttackStartup()
