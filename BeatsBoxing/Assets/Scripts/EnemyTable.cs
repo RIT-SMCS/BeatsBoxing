@@ -41,18 +41,35 @@ public class EnemyTable : MonoBehaviour {
     }
     public GameObject CreateRandom()
     {
-        string enemy;
-        float totalWeight = 0;
-        
-        foreach(KeyValuePair<string, float> e in enemyTypes)
+        float randWeighted = RandomWeighted();
+
+        foreach (KeyValuePair<string, float> e in enemyTypes)
         {
-            totalWeight += e.Value;
+            
         }
-         
-        float randomWeight = Random.Range(0,totalWeight);
 
         //GameObject temp = Instantiate(Resources.Load(enemyTypes[Random.Range(0, enemyTypes.Count)])) as GameObject;
         GameObject temp = new GameObject();
         return temp;
-    }    
+    }
+    //Obtained from http://forum.unity3d.com/threads/selection-based-on-percentage-weighting-in-c.274680/
+    public float RandomWeighted()
+    {
+        float totalWeight = 0.0f, result = 0.0f, total = 0.0f;
+
+        foreach (KeyValuePair<string, float> e in enemyTypes)
+        {
+            totalWeight += e.Value;
+        }
+
+        float rand = Random.Range(0.0f, totalWeight + 1.0f);
+
+        foreach (KeyValuePair<string, float> e in enemyTypes)
+        {
+            result += 0.1f;
+            total += e.Value;
+            if (total > rand) break;
+        }
+        return result;
+    }
 }
