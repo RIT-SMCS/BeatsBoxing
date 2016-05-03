@@ -69,12 +69,14 @@ public abstract class Enemy : LaneActor {
 
     protected virtual void Idle() { }
     protected virtual void Move() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position+Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left, minimumEnemyFollowDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position+1.01f*Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
         if (hit.transform != null)
         {
-            Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
+            //Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
+            //Debug.Log(this.transform.name + " HIT " + hit.transform.name);
+            
         }
-        if (transform.position.x - player.transform.position.x > minimumDistance || hit.transform == null || hit.transform.tag != "Enemy" || hit.distance >= minimumEnemyFollowDistance)
+        if (transform.position.x - player.transform.position.x > minimumDistance && ( hit.transform == null || hit.transform.tag != "Enemy" || hit.distance >= minimumEnemyFollowDistance))
         {
             this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;
         }
@@ -87,15 +89,16 @@ public abstract class Enemy : LaneActor {
     }
     protected virtual void Track() {
         Move();
-        RaycastHit2D upHit = Physics2D.Raycast(transform.position + Vector3.up * transform.GetComponent<Collider2D>().bounds.extents.y, Vector2.up);
-        //if (hit.transform != null)
-        //{
-        //    Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
-        //    Debug.DrawRay(transform.position, Vector2.up); 
-        //}
-        if (BeatManager.Instance.IsOnBeat && upHit.transform == null)
+        
+        
+        if (BeatManager.Instance.IsOnBeat)// && (upHit.transform == null || upHit.distance <= LaneActor.LANEHEIGHT))
         {
-            this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);
+            float sign = Mathf.Sign(player.Lane - this.Lane);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + sign * 1.01f * Vector3.up * transform.GetComponent<Collider2D>().bounds.extents.y, sign*Vector2.up);
+            if (hit.transform == null || hit.distance > LaneActor.LANEHEIGHT)
+            {
+                this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);
+            }
         }
         
     }

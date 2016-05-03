@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.ClearDeveloperConsole();
         if (Time.time >= lastSpawnTime + spawnRate / (0.9f * ScoreManager.SpeedScale)) 
         {
             lastSpawnTime = Time.time;
@@ -47,6 +48,14 @@ public class GameManager : MonoBehaviour {
             ScoreManager.Combo += 10;
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ScoreManager.AddScoreWithMultiplier(10);
+        }
+        if (Input.GetKey(KeyCode.Alpha7))
+        {
+            ScoreManager.Combo += 10;
+        }
+        if (Input.GetKey(KeyCode.Alpha8))
         {
             ScoreManager.AddScoreWithMultiplier(10);
         }

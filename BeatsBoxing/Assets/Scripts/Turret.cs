@@ -13,8 +13,9 @@ public class Turret : Enemy {
         _currentLane = 0;
         Lane = _currentLane;
         bullet = null;
-        _movementScale = 0.25f;
-        minimumDistance = 8.0f;
+        //_movementScale = 0.25f;
+        minimumDistance = 6.0f;
+        minimumEnemyFollowDistance = 0.5f;
     }
 
     // Update is called once per frame

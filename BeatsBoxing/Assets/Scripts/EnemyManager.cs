@@ -12,6 +12,8 @@ public class EnemyManager : MonoBehaviour {
     private string[] enemyTable;
     float minX;
 
+    static int enemyID = 0;
+
 
     [SerializeField]
     private float beatsPerMinute;
@@ -91,6 +93,7 @@ public class EnemyManager : MonoBehaviour {
         en.Lane = laneNum;
         en.ReadyUp();
         temp.transform.parent = this.transform;
+        en.name = "enemy " + (++enemyID);
         enemies.Add(temp);        
     }
     
