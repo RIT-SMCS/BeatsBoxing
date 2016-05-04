@@ -79,14 +79,16 @@ public class EnemyTable : MonoBehaviour {
             totalWeight += e.Value;
         }
 
-        float rand = Random.Range(0.0f, totalWeight + 1.0f);
+        float rand = Random.Range(0.0f, totalWeight);
 
         foreach (KeyValuePair<string, float> e in enemyTypes)
         {
-            result += 0.1f;
+            result += 1.0f;
             total += e.Value;
             if (total > rand) break;
         }
+        Debug.Log("Total Weight: " + totalWeight);
+        Debug.Log("Result: " + result);
         return result;
     }
 }

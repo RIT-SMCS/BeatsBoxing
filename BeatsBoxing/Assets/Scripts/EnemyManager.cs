@@ -28,15 +28,11 @@ public class EnemyManager : MonoBehaviour {
 	void Start() {        
         enemies = new List<GameObject>();
         Debug.Log(eTable.EnemyTypes);
-        eTable.Add("BasicEnemyPrefab");
-        eTable.Add("BasicEnemyPrefab");
-        eTable.Add("BasicEnemyPrefab");
-        eTable.Add("TrackingEnemyPrefab");
-        eTable.Add("TrackingEnemyPrefab");
-        eTable.Add("TrackingEnemyPrefab");
-        eTable.Add("TurretEnemyPrefab");
-        eTable.Add("TurretEnemyPrefab");
-        eTable.Add("SpikesPrefab");        
+        eTable.Add("BasicEnemyPrefab", 4.0f);       
+        eTable.Add("TrackingEnemyPrefab", 3.0f);       
+        eTable.Add("TurretEnemyPrefab", 2.0f);        
+        eTable.Add("SpikesPrefab", 1.0f);
+        eTable.Add("WallPrefab", 1.0f);
     }
 	
 	void Awake()
