@@ -8,6 +8,8 @@ public abstract class Enemy : LaneActor {
     protected float startX;
     protected State currentState;
     protected GameObject player;
+    [SerializeField]
+    protected EnemyTable eTable;
 
     private float bubbleDuration = 2.0f;
     public float BubbleDuration
@@ -23,12 +25,20 @@ public abstract class Enemy : LaneActor {
         get { return startX; }
         set { startX = value; }
     }
+    public EnemyTable ETable
+    {
+        get { return eTable; }
+        set { eTable = value; }
+    }
 
 	// Use this for initialization
 	public virtual void Awake () {
-        
         player = GameObject.FindGameObjectWithTag("Player");
-
+        eTable.Add("BasicEnemyPrefab", 4.0f);
+        eTable.Add("TrackingEnemyPrefab", 3.0f);
+        eTable.Add("TurretEnemyPrefab", 2.0f);
+        eTable.Add("SpikesPrefab", 1.0f);
+        eTable.Add("WallPrefab", 1.0f);
     }
 	
 	// Update is called once per frame

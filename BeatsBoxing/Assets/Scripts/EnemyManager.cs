@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour {
     List<GameObject> enemies;
     public GameObject player;
     public EnemyTable eTable;
+    private Enemy lastEnemy;
     float minX;
 
 
@@ -26,8 +27,7 @@ public class EnemyManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start() {        
-        enemies = new List<GameObject>();
-        Debug.Log(eTable.EnemyTypes);
+        enemies = new List<GameObject>();        
         eTable.Add("BasicEnemyPrefab", 4.0f);       
         eTable.Add("TrackingEnemyPrefab", 3.0f);       
         eTable.Add("TurretEnemyPrefab", 2.0f);        

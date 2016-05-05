@@ -53,7 +53,16 @@ public class EnemyTable : MonoBehaviour {
                 {
                     temp = e.Value;
                     toChoose = e;
-                }                
+                }          
+                if(temp == 0.0f || e.Value - randWeighted == temp - randWeighted)
+                {
+                    int tempRand = Random.Range(0, 1);
+                    if(tempRand == 1)
+                    {
+                        temp = e.Value;
+                        toChoose = e;
+                    }
+                }
             }
         }
 
@@ -87,8 +96,9 @@ public class EnemyTable : MonoBehaviour {
             total += e.Value;
             if (total > rand) break;
         }
-        Debug.Log("Total Weight: " + totalWeight);
-        Debug.Log("Result: " + result);
+        //Debug.Log("Total Weight: " + totalWeight);
+        //Debug.Log("Random: " + rand);
+        //Debug.Log("Result: " + result);
         return result;
     }
 }
