@@ -10,6 +10,8 @@ public abstract class Enemy : LaneActor {
     protected State currentState;
     protected State nextStateOnBeat;
     protected Player player;
+    [SerializeField]
+    protected EnemyTable eTable;
 
     private float bubbleDuration = 2.0f;
 
@@ -35,6 +37,11 @@ public abstract class Enemy : LaneActor {
         get { return startX; }
         set { startX = value; }
     }
+    public EnemyTable ETable
+    {
+        get { return eTable; }
+        set { eTable = value; }
+    }
 
 	// Use this for initialization
 	public override void Awake () {
@@ -45,6 +52,12 @@ public abstract class Enemy : LaneActor {
         nextStateOnBeat = currentState;
 
         BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;
+
+        /*eTable.Add("BasicEnemyPrefab", 4.0f);
+        eTable.Add("TrackingEnemyPrefab", 3.0f);
+        eTable.Add("TurretEnemyPrefab", 2.0f);
+        eTable.Add("SpikesPrefab", 1.0f);
+        eTable.Add("WallPrefab", 1.0f);*/
     }
 	
 	// Update is called once per frame
