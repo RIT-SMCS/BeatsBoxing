@@ -52,13 +52,14 @@ public static class ScoreManager {
         }
     }
     /// <summary>
-    /// Returns the current acceleration based on the current score
+    /// Returns the current acceleration based on the current score. Here is the formula
     /// </summary>
     public static float SpeedScale
     {
         get
         {
             speedScale = 1.0f + 0.50f*(score / 100f);
+            //Mathf.Log()
             return speedScale;
         }
     }
