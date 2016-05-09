@@ -59,6 +59,7 @@ public static class ScoreManager {
         get
         {
             speedScale = 1.0f + 0.50f*(score / 100f);
+            speedScale = Mathf.Min(speedScale, 15.0f);
             //Mathf.Log()
             return speedScale;
         }

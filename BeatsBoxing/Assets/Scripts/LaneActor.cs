@@ -9,6 +9,7 @@ public abstract class LaneActor : MonoBehaviour {
     public const float LANEHEIGHT = 1.0f;
 
     protected int _health;
+    [SerializeField]
     protected int _currentLane;
     protected float _xVelocity;
 

@@ -24,6 +24,8 @@ public abstract class Enemy : LaneActor {
     protected int idleBeats = 2;
 
     protected GameObject bullet;
+
+    private Collider2D collider;
     public float BubbleDuration
     {
         get { return bubbleDuration; }
@@ -50,6 +52,8 @@ public abstract class Enemy : LaneActor {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         currentState = State.Moving;
         nextStateOnBeat = currentState;
+
+        collider = this.transform.GetComponent<Collider2D>();
 
         BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;
 
@@ -82,7 +86,8 @@ public abstract class Enemy : LaneActor {
 
     protected virtual void Idle() { }
     protected virtual void Move() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position+1.01f*Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position+1.01f*Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
+        RaycastHit2D hit = Physics2D.Raycast((transform.position + new Vector3(collider.offset.x, collider.offset.y, 0.0f)) + 1.01f * Vector3.left * collider.bounds.extents.x, Vector2.left);
         if (hit.transform != null)
         {
             //Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
@@ -97,8 +102,7 @@ public abstract class Enemy : LaneActor {
         {
             nextStateOnBeat = State.AttackStartup;
         }
-        
-        
+              
     }
     protected virtual void Track() {
         Move();
@@ -107,7 +111,7 @@ public abstract class Enemy : LaneActor {
         if (BeatManager.Instance.IsOnBeat)// && (upHit.transform == null || upHit.distance <= LaneActor.LANEHEIGHT))
         {
             float sign = Mathf.Sign(player.Lane - this.Lane);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + sign * 1.01f * Vector3.up * transform.GetComponent<Collider2D>().bounds.extents.y, sign*Vector2.up);
+            RaycastHit2D hit = Physics2D.Raycast((transform.position+ new Vector3(collider.offset.x, collider.offset.y, 0.0f)) + sign * 1.01f * Vector3.up * collider.bounds.extents.y, sign*Vector2.up);
             if (hit.transform == null || hit.distance > LaneActor.LANEHEIGHT)
             {
                 this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);

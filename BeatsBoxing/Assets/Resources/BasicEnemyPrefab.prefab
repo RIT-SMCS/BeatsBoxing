@@ -57,9 +57,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .270000011, y: 0}
+  m_Offset: {x: .270000011, y: -.0799999982}
   serializedVersion: 2
-  m_Size: {x: .709999979, y: 1.37}
+  m_Size: {x: .709999979, y: .959999979}
 --- !u!114 &11422872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,8 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c89856e9eab8ca49b575c8ab9613a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentLane: 0
   baseScale: {x: 0, y: 0, z: 0}
   currentState: 0
+  eTable: {fileID: 0}
 --- !u!212 &21268482
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -115,6 +117,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: -.0799999982
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .959999979
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
