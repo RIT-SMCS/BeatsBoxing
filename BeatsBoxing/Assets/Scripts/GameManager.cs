@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour {
 
     public Lane LanePrefab;
     public GameObject LaneBarrierPrefab;
-    public Player _player;
-	public EnemyManager eManager;
+    public Player _player;	
     public GameObject TelegraphPrefab;
 
 
@@ -24,7 +23,7 @@ public class GameManager : MonoBehaviour {
         lastSpawnTime = startDelay;
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		ScoreManager.Reset();
-        eManager.Reset();      
+        EnemyManager.Reset();      
 
         BeatManager.Instance.ExecuteOnBeat += SpawnEnemies;
     }
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour {
     {
         if (toSpawnOnBeat)
         {
-            eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f, 6.0f)));
+            EnemyManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f, 6.0f)));
             toSpawnOnBeat = false;
         }
     }

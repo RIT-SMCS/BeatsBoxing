@@ -2,48 +2,39 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyManager : MonoBehaviour {
+public static class EnemyManager {
 
-    public int maxEnemies;
-    public int numEnemies;    
-    List<GameObject> enemies;
-    public GameObject player;
-    public EnemyTable eTable;
-    private Enemy lastEnemy;
-    float minX;
+    public static int maxEnemies = 10;
+    public static int numEnemies = 10;    
+    static List<GameObject> enemies = new List<GameObject>(); 
+    public static GameObject player;
+    public static EnemyTable eTable;
+    private static Enemy lastEnemy;
+    static float minX;
 
     static int enemyID = 0;
 
 
     [SerializeField]
-    private float beatsPerMinute;
+    private static float beatsPerMinute;
 
-    public List<GameObject> Enemies
+    public static List<GameObject> Enemies
     {
         get { return enemies; }
     }
-    public EnemyTable ETable
+    public static EnemyTable ETable
     {
         get { return eTable; }
         set { eTable = value; }
-    }
-	// Use this for initialization
-	void Start() {        
-        enemies = new List<GameObject>();        
-        eTable.Add("BasicEnemyPrefab", 4.0f);       
-        eTable.Add("TrackingEnemyPrefab", 3.0f);       
-        eTable.Add("TurretEnemyPrefab", 2.0f);        
-        eTable.Add("SpikesPrefab", 1.0f);
-        eTable.Add("WallPrefab", 1.0f);
-    }
+    }	
 	
-	void Awake()
+	static void Awake()
 	{        
         minX = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(Vector3.zero).x;
     }
 	
 	// Update is called once per frame
-	void Update () {
+	static void Update () {
         List<GameObject> toRemove = new List<GameObject>();
 	    foreach(GameObject e in enemies)
         {            
@@ -54,7 +45,7 @@ public class EnemyManager : MonoBehaviour {
         }        
         foreach (GameObject e in toRemove)
         {
-            RemoveEnemy(e);
+            RemoveEnemy(e);            
             ScoreManager.AddScoreWithMultiplier(10);       
         }
 
@@ -65,7 +56,7 @@ public class EnemyManager : MonoBehaviour {
     }
 
     //Instantiate an Enemy and add it to list
-    public void MakeEnemy(int laneNum)
+    public static void MakeEnemy(int laneNum)
     {
 		if (enemies.Count < maxEnemies) {
 			GameObject temp = eTable.CreateRandom ();
@@ -87,19 +78,19 @@ public class EnemyManager : MonoBehaviour {
 			temp.transform.position = new Vector3((en.StartX = attackPositionX + deltaX), 0.0f, 0.0f);
 			en.Lane = laneNum;
 			en.ReadyUp();
-			temp.transform.parent = this.transform;
+			temp.transform.parent = temp.transform; //this.transform?
 			en.name = "enemy " + (++enemyID);
 			enemies.Add(temp);        
 		}
     }
     
     //remove Enemy from List and destroy it
-    public void RemoveEnemy(GameObject e)
+    public static GameObject RemoveEnemy(GameObject e)
     {
         enemies.Remove(e);
-        Destroy(e);
+        return e;
     }
-    public void Reset()
+    public static void Reset()
     {     
            
     }
