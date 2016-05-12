@@ -12,10 +12,15 @@ public class GameManager : MonoBehaviour {
 	public EnemyManager eManager;
     public GameObject TelegraphPrefab;
 
-
     [SerializeField] private float startDelay;
     [SerializeField] private float spawnRate;
 
+    [SerializeField] GameObject topPlane;
+    [SerializeField] GameObject botPlane;
+
+    Material vectorMat;
+
+    Material topMat, botMat;
     private float lastSpawnTime;
     private bool toSpawnOnBeat = false;
 
@@ -27,6 +32,11 @@ public class GameManager : MonoBehaviour {
         eManager.Reset();      
 
         BeatManager.Instance.ExecuteOnBeat += SpawnEnemies;
+
+        topMat = topPlane.GetComponent<Renderer>().material;
+        botMat = botPlane.GetComponent<Renderer>().material;
+
+
     }
 	
 	// Update is called once per frame
@@ -60,6 +70,10 @@ public class GameManager : MonoBehaviour {
         {
             ScoreManager.AddScoreWithMultiplier(10);
         }
+
+        topMat.mainTextureOffset += new Vector2(0.0f, -0.01f);
+        botMat.mainTextureOffset += new Vector2(0.0f, 0.01f);
+
     }
 
     void SpawnEnemies()
