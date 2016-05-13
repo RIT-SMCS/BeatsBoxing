@@ -8,12 +8,11 @@ public static class EnemyManager {
     public static int numEnemies = 10;    
     static List<GameObject> enemies = new List<GameObject>(); 
     public static GameObject player;
-    public static EnemyTable eTable;
+    public static EnemyTable eTable = new EnemyTable();
     private static Enemy lastEnemy;
     static float minX;
 
-    static int enemyID = 0;
-
+    static int enemyID = 0;    
 
     [SerializeField]
     private static float beatsPerMinute;
@@ -27,6 +26,15 @@ public static class EnemyManager {
         get { return eTable; }
         set { eTable = value; }
     }	
+
+    static void Start()
+    {
+        eTable.Add("BasicEnemyPrefab", 4);
+        eTable.Add("TrackingEnemyPrefab", 3);
+        eTable.Add("TurretEnemyPrefab", 2);
+        eTable.Add("SpikesPrefab", 1);
+        eTable.Add("WallPrefab", 1);
+    }
 	
 	static void Awake()
 	{        
@@ -59,7 +67,11 @@ public static class EnemyManager {
     public static void MakeEnemy(int laneNum)
     {
 		if (enemies.Count < maxEnemies) {
-			GameObject temp = eTable.CreateRandom ();
+            GameObject temp;
+
+            if (lastEnemy == null) { temp = GameObject.Instantiate(Resources.Load("BasicEnemyPrefab")) as GameObject; }
+            else { temp = lastEnemy.ETable.CreateRandom(); }
+
 			Enemy en = temp.GetComponent<Enemy>();
 			//set the XVelocity to the appropriate speed
 			en.XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
@@ -80,7 +92,8 @@ public static class EnemyManager {
 			en.ReadyUp();
 			temp.transform.parent = temp.transform; //this.transform?
 			en.name = "enemy " + (++enemyID);
-			enemies.Add(temp);        
+			enemies.Add(temp);
+            lastEnemy = en;
 		}
     }
     

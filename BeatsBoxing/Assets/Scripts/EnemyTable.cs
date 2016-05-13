@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyTable : MonoBehaviour {
+public class EnemyTable{
 
     private Dictionary<string, float> enemyTypes;    
 
@@ -69,11 +69,11 @@ public class EnemyTable : MonoBehaviour {
         GameObject enemy;
         if (toChoose.Key != null)
         {
-            enemy = Instantiate(Resources.Load(toChoose.Key)) as GameObject;
+            enemy = GameObject.Instantiate(Resources.Load(toChoose.Key)) as GameObject;
         }
         else
         {
-            enemy = Instantiate(Resources.Load("BasicEnemyPrefab")) as GameObject;
+            enemy = GameObject.Instantiate(Resources.Load("BasicEnemyPrefab")) as GameObject;
         }
         
         return enemy;
