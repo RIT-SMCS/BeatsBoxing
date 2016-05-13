@@ -26,7 +26,7 @@ public class SimpleIK : MonoBehaviour {
     public Node[] angleLimitsFacingLeft;
 
     //stores the facing-rightness of the 
-    bool isFacingRight = true;
+    public bool isFacingRight = false;
 
 	//Dictionary for quick access later
 	Dictionary<Transform, Node> nodes;
@@ -57,7 +57,8 @@ public class SimpleIK : MonoBehaviour {
 			n.min = ClampAngle (n.min, -360, 360);
 			n.max = ClampAngle (n.max, -360, 360);
 		}
-	}
+        SetFacingRight(isFacingRight);
+    }
 
     // Set up the quick-access dictionary
     void Start()
@@ -85,7 +86,7 @@ public class SimpleIK : MonoBehaviour {
             nodesLeft[n.transform] = n;
         }
 
-        SetFacingRight(isFacingRight);
+        SetFacingRight(false);
 	}
 	//run IK
 	void LateUpdate () 
