@@ -42,11 +42,13 @@ public class Attack : MonoBehaviour {
 			ScoreManager.Combo += 1;
             //GetComponentInParent<Player>();
 			//Debug.Log("ENEMY HIT"); 
+			this.transform.parent.GetComponent<Player>().missTimer = 0; 
 		}
         if (attacking && other.gameObject.CompareTag("Bullet") && other.gameObject.GetComponent<Bullet>().IsReflected == false)
         {
             other.gameObject.GetComponent<Bullet>().Velocity *= -1;
-            other.gameObject.GetComponent<Bullet>().IsReflected = true;           
+            other.gameObject.GetComponent<Bullet>().IsReflected = true;
+			this.transform.parent.GetComponent<Player>().missTimer = 0; 
         }
     }    
 }

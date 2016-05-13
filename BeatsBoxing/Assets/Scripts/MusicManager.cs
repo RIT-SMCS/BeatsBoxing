@@ -23,15 +23,26 @@ public class MusicManager : MonoBehaviour {
 		source.clip = startMusic; 
 		//source.PlayOneShot (startMusic, musicVol); 
 		source.Play (); 
-		scoreBarrier1 = 100.0f; 
-		scoreBarrier2 = 200.0f; 
+		scoreBarrier1 = 5.0f; 
+		scoreBarrier2 = 10.0f; 
 		switch1 = true; 
 		switch2 = true; 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (ScoreManager.Score > scoreBarrier2 && switch2) 
+		if (ScoreManager.Combo == 0) 
+		{
+			source.Pause();
+			int time = source.timeSamples; 
+			//source.PlayOneShot(musicPhase2, musicVol);
+			source.clip = startMusic; 
+			source.timeSamples = time; 
+			source.Play(); 
+			switch1 = true; 
+			switch2 = true; 
+		}
+		else if (ScoreManager.Combo > scoreBarrier2 && switch2) 
 		{
 			source.Pause();
 			int time = source.timeSamples; 
@@ -44,7 +55,7 @@ public class MusicManager : MonoBehaviour {
 			
 			switch2 = false; 
 		}
-		else if(ScoreManager.Score > scoreBarrier1 && switch1)
+		else if(ScoreManager.Combo > scoreBarrier1 && switch1)
 		{
 			source.Pause();
 			int time = source.timeSamples; 

@@ -24,7 +24,7 @@ public class BeatManager : MonoBehaviour {
 	public OnBeat ExecuteOnBeat;
 
 	//Beat timing relevent vars
-	public int m_BPM = 60;
+	public int m_BPM = 109; //changed this to match Eye of the Tiger --Sarah
 	public float m_BPM_Offset = 0.0f;
 
     private float m_timePerBeat;

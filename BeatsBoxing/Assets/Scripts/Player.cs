@@ -5,9 +5,9 @@ using System;
 public class Player : LaneActor
 {
    
-
    
 	private int attackTimer; 
+	public int missTimer; 
 	public AudioClip punch; //the actual punch sound
 	public AudioClip switchLane; //the switching lanes sound
 	public AudioClip takeDamage; //the "oof" sound effect
@@ -22,6 +22,8 @@ public class Player : LaneActor
 	bool animationState; 
 	//Lower this number to increase the speed of the walk animation
 	public float ANIMATIONSPEED;    
+
+	Color coneColor; 
     
 	public override void Awake()
     {
@@ -47,6 +49,10 @@ public class Player : LaneActor
 		animationTimer = 0.0f; 
 		animationState = true; 
 		ANIMATIONSPEED = 0.5f;
+
+		missTimer = 0;
+
+		//coneColor = this.transform.Find ("EmptyCone/Player").gameObject.SpriteRenderer.color; 
     }
 
     public override void Update()
@@ -82,6 +88,9 @@ public class Player : LaneActor
             }
         }
 
+		if (missTimer > 0)
+			missTimer --;
+
         if (knockingBack)
         {
             Knockback();
@@ -112,12 +121,13 @@ public class Player : LaneActor
 
     public override void DoAttackPattern()
     {
-        if (!knockingBack)
+        if (!knockingBack && missTimer <= 0)
         {
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
             attackTimer = AttackDuration; 
             source.PlayOneShot (punch, audioVol); 
 			this.gameObject.GetComponent<SpriteRenderer>().sprite = attackAnimation; 
+			missTimer = 100; 
         }
 		
     }
