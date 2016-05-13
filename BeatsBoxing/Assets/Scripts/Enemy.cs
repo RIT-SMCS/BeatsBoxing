@@ -45,6 +45,16 @@ public abstract class Enemy : LaneActor {
         set { eTable = value; }
     }
 
+    public void Start()
+    {
+        eTable = new EnemyTable();
+        eTable.Add("BasicEnemyPrefab", 4.0f);
+        eTable.Add("TrackingEnemyPrefab", 3.0f);
+        eTable.Add("TurretEnemyPrefab", 2.0f);
+        eTable.Add("SpikesPrefab", 1.0f);
+        eTable.Add("WallPrefab", 1.0f);
+    }
+
 	// Use this for initialization
 	public override void Awake () {
         base.Awake();
@@ -55,14 +65,9 @@ public abstract class Enemy : LaneActor {
 
         collider = this.transform.GetComponent<Collider2D>();
 
-        BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;
-        eTable = new EnemyTable();
+        BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;        
 
-        eTable.Add("BasicEnemyPrefab", 4.0f);
-        eTable.Add("TrackingEnemyPrefab", 3.0f);
-        eTable.Add("TurretEnemyPrefab", 2.0f);
-        eTable.Add("SpikesPrefab", 1.0f);
-        eTable.Add("WallPrefab", 1.0f);
+        //Debug.Log(eTable.EnemyTypes);        
     }
 	
 	// Update is called once per frame

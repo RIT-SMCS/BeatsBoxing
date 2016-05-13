@@ -39,6 +39,7 @@ public static class EnemyManager {
 	static void Awake()
 	{        
         minX = Camera.main.GetComponent<Camera>().ScreenToWorldPoint(Vector3.zero).x;
+        player = GameObject.FindObjectOfType<Player>().gameObject;
     }
 	
 	// Update is called once per frame
@@ -70,13 +71,13 @@ public static class EnemyManager {
             GameObject temp;
 
             if (lastEnemy == null) { temp = GameObject.Instantiate(Resources.Load("BasicEnemyPrefab")) as GameObject; }
-            else { temp = lastEnemy.ETable.CreateRandom(); }
+            else { temp = lastEnemy.ETable.CreateRandom(); }            
 
 			Enemy en = temp.GetComponent<Enemy>();
 			//set the XVelocity to the appropriate speed
 			en.XVelocity = (-1.0f - (ScoreManager.SpeedScale - 1.0f));
-			//get the current x position of the Player's Attack hitbox
-			float attackPositionX = player.GetComponentInChildren<Attack>().transform.position.x;
+            //get the current x position of the Player's Attack hitbox
+            float attackPositionX = player.GetComponentInChildren<Attack>().transform.position.x;
 			//find the change in x position per beat of the song
 			float dxPerBeat = 60.0f * -en.XVelocity / (beatsPerMinute);
 			//find how many beats it will take to ensure the enemy spawns off the right side of the screen
