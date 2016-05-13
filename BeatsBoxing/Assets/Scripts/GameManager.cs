@@ -5,7 +5,7 @@ using System.Collections;
 //static float[] LanePositions = new float[] {   };
 //[RequireComponent (typeof(ScoreManager))]
 public class GameManager : MonoBehaviour {
-
+       
     public Lane LanePrefab;
     public GameObject LaneBarrierPrefab;
     public Player _player;
@@ -15,12 +15,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private float startDelay;
     [SerializeField] private float spawnRate;
 
-    [SerializeField] GameObject topPlane;
-    [SerializeField] GameObject botPlane;
-
-    Material vectorMat;
-
-    Material topMat, botMat;
+    
+ 
     private float lastSpawnTime;
     private bool toSpawnOnBeat = false;
 
@@ -33,8 +29,7 @@ public class GameManager : MonoBehaviour {
 
         BeatManager.Instance.ExecuteOnBeat += SpawnEnemies;
 
-        topMat = topPlane.GetComponent<Renderer>().material;
-        botMat = botPlane.GetComponent<Renderer>().material;
+        
 
 
     }
@@ -71,8 +66,6 @@ public class GameManager : MonoBehaviour {
             ScoreManager.AddScoreWithMultiplier(10);
         }
 
-        topMat.mainTextureOffset += new Vector2(0.0f, -0.01f);
-        botMat.mainTextureOffset += new Vector2(0.0f, 0.01f);
 
     }
 
