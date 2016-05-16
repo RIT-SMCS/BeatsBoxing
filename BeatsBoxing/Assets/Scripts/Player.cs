@@ -124,27 +124,34 @@ public class Player : LaneActor
 
     public void TakeDamage(int damage)
     {
-        this.Health -= damage; 
-       
-        if (this.Health == 0) {
-            Application.LoadLevel(Application.levelCount - 1);
-        }
+        if (!knockingBack) {
+            this.Health -= damage;
 
-        ScoreManager.Combo = 0;
-        source.PlayOneShot (takeDamage, audioVol); 
-        
-		if (Camera.main.GetComponent<Camera> ().WorldToScreenPoint (startingPos - new Vector3 (2, 0, 0)).x >= 100)
-        {
-            dtKnockBack = 0.0f;
-			this.knockingBack = true;
-            //this.startingPos = transform.position;
-            _isReady = false;
-            Lane = _currentLane;
-            _isReady = true;
-            this.switchingLanes = false;
-            dtLaneSwitch = 0.0f;
-            startingPos.y = Mathf.Round(startingPos.y);
-		}
+            if (this.Health == 0) {
+                Application.LoadLevel(Application.levelCount - 1);
+            }
+
+            ScoreManager.Combo = 0;
+            source.PlayOneShot(takeDamage, audioVol);
+
+            if(switchingLanes)
+            {
+                _isReady = false;
+                Lane = _currentLane;
+                _isReady = true;
+                this.switchingLanes = false;
+                dtLaneSwitch = 0.0f;
+            }
+
+            if (Camera.main.GetComponent<Camera>().WorldToScreenPoint(startingPos - new Vector3(2, 0, 0)).x >= 100)
+            {
+                dtKnockBack = 0.0f;
+                this.knockingBack = true;
+                this.startingPos = transform.position;
+                
+                
+            }
+        }
     }
 
    
