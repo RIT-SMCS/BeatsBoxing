@@ -11,7 +11,7 @@ public abstract class Enemy : LaneActor {
     protected State nextStateOnBeat;
     protected Player player;
     [SerializeField]
-    protected EnemyTable eTable;
+    protected static EnemyTable eTable;
 
     private float bubbleDuration = 2.0f;
 
@@ -52,6 +52,7 @@ public abstract class Enemy : LaneActor {
         eTable.Add("TrackingEnemyPrefab", 3.0f);
         eTable.Add("TurretEnemyPrefab", 2.0f);
         eTable.Add("SpikesPrefab", 1.0f);
+        eTable.Add("PitPrefab", 1.0f);
         eTable.Add("WallPrefab", 1.0f);
     }
 
