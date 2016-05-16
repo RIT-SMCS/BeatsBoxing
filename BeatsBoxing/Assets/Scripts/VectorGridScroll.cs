@@ -29,6 +29,7 @@ public class VectorGridScroll : MonoBehaviour {
             index = (index + 1) % (colors.Length - 1);
         }
 
+
         nextColor = colors[index];
     }
 	
@@ -48,9 +49,12 @@ public class VectorGridScroll : MonoBehaviour {
                 index = (index + 1) % (colors.Length - 1);
             }
 
+            
+
             nextColor = colors[index];
 
         }
+
 
         topMat.color = Color.Lerp(currentColor, nextColor, lerpTime / duration);
         topMat.SetColor("_EmissionColor", topMat.color);

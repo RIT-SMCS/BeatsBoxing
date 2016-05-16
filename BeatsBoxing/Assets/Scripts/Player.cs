@@ -112,7 +112,7 @@ public class Player : LaneActor
 
     public override void DoAttackPattern()
     {
-        if (!knockingBack)
+        if (!knockingBack && !switchingLanes)
         {
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
             attackTimer = AttackDuration; 
@@ -141,6 +141,8 @@ public class Player : LaneActor
             _isReady = false;
             Lane = _currentLane;
             _isReady = true;
+            this.switchingLanes = false;
+            dtLaneSwitch = 0.0f;
             startingPos.y = Mathf.Round(startingPos.y);
 		}
     }
