@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
         HealthText.text = curhealth;
         ScoreText.text = "Score: " + ScoreManager.Score;
         ComboText.text = "Combo x" + ScoreManager.Combo;
-        MultText.text =  "Multiplier x" + ScoreManager.Multiplier;
+        MultText.text =  "Multiplier x" + ScoreManager.Multiplier.ToString("0.0");
 
 		//SetText (Mobile,"" + Camera.main.GetComponent<Camera> ().WorldToScreenPoint (gameManager._player.startingPos));
 

@@ -61,7 +61,8 @@ public class VectorGridScroll : MonoBehaviour {
         botMat.color = Color.Lerp(currentColor, nextColor, lerpTime / duration);
         botMat.SetColor("_EmissionColor", botMat.color);
 
-        topMat.mainTextureOffset = new Vector2((topMat.mainTextureOffset.x - (ScrollFactor * ScoreManager.SpeedScale * Time.deltaTime)) % 1.0f, (topMat.mainTextureOffset.y - 0.01f) % 1.0f);
-        botMat.mainTextureOffset = new Vector2((botMat.mainTextureOffset.x - (ScrollFactor * ScoreManager.SpeedScale * Time.deltaTime)) % 1.0f, (botMat.mainTextureOffset.y + 0.01f) % 1.0f);
+
+        topMat.mainTextureOffset = new Vector2((topMat.mainTextureOffset.x - (ScrollFactor * Mathf.Min(ScoreManager.SpeedScale, 10) * Time.deltaTime)) % 1.0f, (topMat.mainTextureOffset.y - 0.01f) % 1.0f);
+        botMat.mainTextureOffset = new Vector2((botMat.mainTextureOffset.x - (ScrollFactor * Mathf.Min(ScoreManager.SpeedScale, 10) * Time.deltaTime)) % 1.0f, (botMat.mainTextureOffset.y + 0.01f) % 1.0f);
     }
 }
