@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Wall : Enemy {   
+public class Wall : Enemy {
+
+    public override void Start()
+    {
+        base.Start();
+    }
 
     // Use this for initialization
     public override void Awake()

@@ -41,7 +41,6 @@ public class Attack : MonoBehaviour {
 			attacking = false; 
 			ScoreManager.Combo += 1;
             //GetComponentInParent<Player>();
-			//Debug.Log("ENEMY HIT"); 
 		}
         if (attacking && other.gameObject.CompareTag("Bullet") && other.gameObject.GetComponent<Bullet>().IsReflected == false)
         {

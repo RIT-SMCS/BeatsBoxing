@@ -21,9 +21,10 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         lastSpawnTime = startDelay;
+        //EnemyManager.Awake();
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		ScoreManager.Reset();
-        //EnemyManager.Reset();      
+        EnemyManager.Reset();      
 
         BeatManager.Instance.ExecuteOnBeat += SpawnEnemies;
     }
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Debug.ClearDeveloperConsole();
+        EnemyManager.Update();
         if (Time.time >= lastSpawnTime + spawnRate / (0.9f * ScoreManager.SpeedScale)) 
         {
             lastSpawnTime = Time.time;

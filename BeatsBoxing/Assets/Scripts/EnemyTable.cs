@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EnemyTable{
 
-    private Dictionary<string, float> enemyTypes;    
+    private Dictionary<string, float> enemyTypes = new Dictionary<string, float>();    
 
     public Dictionary<string, float> EnemyTypes
     {
@@ -13,9 +13,8 @@ public class EnemyTable{
     }
 
 	// Use this for initialization
-	void Start () {
-        enemyTypes = new Dictionary<string, float>();
-        Debug.Log(enemyTypes);
+	void Start () {        
+        
 	}
 	
 	// Update is called once per frame
