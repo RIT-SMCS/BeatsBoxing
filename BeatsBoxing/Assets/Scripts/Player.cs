@@ -86,6 +86,7 @@ public class Player : LaneActor
         {
             Knockback();
         }
+	
 
         if(switchingLanes)
         {
