@@ -13,7 +13,7 @@ public class Player : LaneActor
 	public AudioClip takeDamage; //the "oof" sound effect
 	public AudioSource source; //the audioSource object that plays the sounds
 	float audioVol; //volume of any given sound
-    public int AttackDuration;
+    public int AttackDuration; //in frames
 
 	public Sprite animation1;
 	public Sprite animation2; 
@@ -54,7 +54,7 @@ public class Player : LaneActor
 
     public override void Update()
     {
-        
+        animator.speed = ANIMATIONSPEED;
 
         //PLAYER CONTROL HANDLING
 		if (Input.GetKeyDown(KeyCode.W) && !knockingBack && !switchingLanes)
@@ -81,6 +81,7 @@ public class Player : LaneActor
             {
                 attackTimer = -1;
                 this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = false;
+                animator.SetTrigger("Run");
                 //Debug.Log("ATTACK STOP"); 
             }
         }
@@ -120,7 +121,14 @@ public class Player : LaneActor
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
             attackTimer = AttackDuration; 
             source.PlayOneShot (punch, audioVol); 
-			this.gameObject.GetComponent<SpriteRenderer>().sprite = attackAnimation; 
+			this.gameObject.GetComponent<SpriteRenderer>().sprite = attackAnimation;
+            if (UnityEngine.Random.value < 0.10)
+            {
+                animator.SetTrigger("Attack-BicycleKick");
+            }
+            else {
+                animator.SetTrigger("Attack");
+            }
         }
 		
     }
