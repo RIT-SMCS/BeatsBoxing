@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour {
 		{
             //deal damage if attacking a valid enemy
             //other.gameObject.GetComponent<LaneActor>().Health = other.gameObject.GetComponent<LaneActor>().Health - 2; 
-            other.gameObject.GetComponent<Enemy>().Health -= 1; 
+            other.gameObject.GetComponent<Enemy>().TakeDamage(1);
 			//end the attack after hitting something
 			attacking = false; 
 			ScoreManager.Combo += 1;
@@ -45,7 +45,13 @@ public class Attack : MonoBehaviour {
         if (attacking && other.gameObject.CompareTag("Bullet") && other.gameObject.GetComponent<Bullet>().IsReflected == false)
         {
             other.gameObject.GetComponent<Bullet>().Velocity *= -1;
-            other.gameObject.GetComponent<Bullet>().IsReflected = true;           
+            other.gameObject.GetComponent<Bullet>().IsReflected = true;
+            attacking = false;
+            ScoreManager.Combo += 1;
+        }
+        if (attacking && other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Player>().TakeDamage(1);
         }
     }    
 }

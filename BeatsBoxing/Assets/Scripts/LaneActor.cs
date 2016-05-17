@@ -107,7 +107,7 @@ public abstract class LaneActor : MonoBehaviour {
     {
         dtKnockBack += Time.deltaTime;
         float duration = 1.0f;
-        float t = Mathf.Min(dtKnockBack, duration) / duration;
+        float t = Mathf.Min(dtKnockBack, duration) / duration;        
         transform.position = Vector3.Lerp(startingPos, startingPos - knockBackVector, t);
         float scaleFactor = 1 + Mathf.Sin(t * Mathf.PI);
         transform.localScale = baseScale * scaleFactor;
@@ -137,6 +137,11 @@ public abstract class LaneActor : MonoBehaviour {
             directionToMove = 0;
         }
 
+    }
+
+    public virtual void TakeDamage(int damage)
+    {
+        this.Health -= damage;
     }
 
     // Use this for initialization

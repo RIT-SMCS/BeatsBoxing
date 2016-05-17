@@ -48,12 +48,14 @@ public abstract class Enemy : LaneActor {
     public virtual void Start()
     {
         eTable = new EnemyTable();        
-        eTable.Add("BasicEnemyPrefab", 4.0f);
-        eTable.Add("ChargingEnemyPrefab", 3.0f);
-        eTable.Add("TurretEnemyPrefab", 2.0f);
+        eTable.Add("BasicEnemyPrefab", 3.5f);
+        eTable.Add("TrackingEnemyPrefab", 3.0f);
+        eTable.Add("ChargingEnemyPrefab", 2.5f);
+        eTable.Add("BruteEnemyPrefab", 2.5f);
+        eTable.Add("TurretEnemyPrefab", 1.5f);
         eTable.Add("SpikesPrefab", 1.0f);
-        eTable.Add("PitPrefab", 1.0f);
-        eTable.Add("WallPrefab", 1.0f);
+        eTable.Add("PitPrefab", 0.5f);
+        eTable.Add("WallPrefab", 0.5f);
     }
 
 	// Use this for initialization
@@ -112,8 +114,7 @@ public abstract class Enemy : LaneActor {
               
     }
     protected virtual void Track() {
-        Move();
-        
+        Move();        
         
         if (BeatManager.Instance.IsOnBeat)// && (upHit.transform == null || upHit.distance <= LaneActor.LANEHEIGHT))
         {
@@ -164,7 +165,7 @@ public abstract class Enemy : LaneActor {
         DoAttackPattern();
     }
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public virtual void OnTriggerEnter2D(Collider2D col)
     {        
         if (col.gameObject.tag == "Player")
         {           

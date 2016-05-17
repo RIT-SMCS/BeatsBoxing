@@ -122,9 +122,9 @@ public class Player : LaneActor
 		
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
-        this.Health -= damage; 
+        base.TakeDamage(damage);
        
         if (this.Health == 0) {
             Application.LoadLevel(Application.levelCount - 1);
