@@ -54,8 +54,8 @@ public class SimpleIK : MonoBehaviour {
 	//Does stuff
 	void OnValidate(){
 		foreach (Node n in angleLimits) {
-			n.min = ClampAngle (n.min, -360, 360);
-			n.max = ClampAngle (n.max, -360, 360);
+			n.min = ClampAngle (n.min, -360, 720);
+			n.max = ClampAngle (n.max, -360, 720);
 		}
         SetFacingRight(isFacingRight);
     }
