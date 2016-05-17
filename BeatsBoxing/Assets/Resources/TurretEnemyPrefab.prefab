@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 456986}
   - 212: {fileID: 21296708}
-  - 58: {fileID: 5821472}
   - 50: {fileID: 5093442}
   - 114: {fileID: 11411362}
+  - 61: {fileID: 6107816}
   m_Layer: 0
   m_Name: TurretEnemyPrefab
   m_TagString: Enemy
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5821472
-CircleCollider2D:
+--- !u!61 &6107816
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -57,9 +57,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: .0900000036, y: 0}
   serializedVersion: 2
-  m_Radius: .100000001
+  m_Size: {x: .569999993, y: .949999988}
 --- !u!114 &11411362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8fb5a9bc2d01548930e2d629fe0680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseScale: {x: 0, y: 0, z: 0}
+  currentState: 0
 --- !u!212 &21296708
 SpriteRenderer:
   m_ObjectHideFlags: 1

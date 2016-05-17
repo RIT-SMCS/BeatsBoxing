@@ -150,7 +150,10 @@ public class Player : LaneActor
         {
             dtKnockBack = 0.0f;
 			this.knockingBack = true;
-			this.startingPos = transform.position;
+            //this.startingPos = transform.position;
+            _isReady = false;
+            Lane = _currentLane;
+            _isReady = true;
             startingPos.y = Mathf.Round(startingPos.y);
 		}
     }

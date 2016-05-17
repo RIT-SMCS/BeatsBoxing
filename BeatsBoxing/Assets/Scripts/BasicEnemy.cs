@@ -4,7 +4,11 @@ using System;
 
 public class BasicEnemy : Enemy {
 
-	// Use this for initialization
+    public override void Start()
+    {
+        base.Start();
+    }
+    // Use this for initialization
     public override void Awake() {
         base.Awake();
         _health = 1;

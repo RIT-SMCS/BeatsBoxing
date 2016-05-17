@@ -10,6 +10,8 @@ public abstract class Enemy : LaneActor {
     protected State currentState;
     protected State nextStateOnBeat;
     protected Player player;
+    [SerializeField]
+    protected static EnemyTable eTable;
 
     private float bubbleDuration = 2.0f;
 
@@ -22,6 +24,8 @@ public abstract class Enemy : LaneActor {
     protected int idleBeats = 2;
 
     protected GameObject bullet;
+
+    private Collider2D collider;
     public float BubbleDuration
     {
         get { return bubbleDuration; }
@@ -35,6 +39,22 @@ public abstract class Enemy : LaneActor {
         get { return startX; }
         set { startX = value; }
     }
+    public EnemyTable ETable
+    {
+        get { return eTable; }
+        set { eTable = value; }
+    }
+
+    public virtual void Start()
+    {
+        eTable = new EnemyTable();        
+        eTable.Add("BasicEnemyPrefab", 4.0f);
+        eTable.Add("ChargingEnemyPrefab", 3.0f);
+        eTable.Add("TurretEnemyPrefab", 2.0f);
+        eTable.Add("SpikesPrefab", 1.0f);
+        eTable.Add("PitPrefab", 1.0f);
+        eTable.Add("WallPrefab", 1.0f);
+    }
 
 	// Use this for initialization
 	public override void Awake () {
@@ -44,7 +64,11 @@ public abstract class Enemy : LaneActor {
         currentState = State.Moving;
         nextStateOnBeat = currentState;
 
-        BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;
+        collider = this.transform.GetComponent<Collider2D>();
+
+        BeatManager.Instance.ExecuteOnBeat += UpdateStateOnBeat;        
+
+        //Debug.Log(eTable.EnemyTypes);        
     }
 	
 	// Update is called once per frame
@@ -69,7 +93,8 @@ public abstract class Enemy : LaneActor {
 
     protected virtual void Idle() { }
     protected virtual void Move() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position+1.01f*Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position+1.01f*Vector3.left * transform.GetComponent<Collider2D>().bounds.extents.x, Vector2.left);
+        RaycastHit2D hit = Physics2D.Raycast((transform.position + new Vector3(collider.offset.x, collider.offset.y, 0.0f)) + 1.01f * Vector3.left * collider.bounds.extents.x, Vector2.left);
         if (hit.transform != null)
         {
             //Debug.DrawLine(transform.position, hit.transform.position, Color.blue);
@@ -84,8 +109,7 @@ public abstract class Enemy : LaneActor {
         {
             nextStateOnBeat = State.AttackStartup;
         }
-        
-        
+              
     }
     protected virtual void Track() {
         Move();
@@ -94,7 +118,7 @@ public abstract class Enemy : LaneActor {
         if (BeatManager.Instance.IsOnBeat)// && (upHit.transform == null || upHit.distance <= LaneActor.LANEHEIGHT))
         {
             float sign = Mathf.Sign(player.Lane - this.Lane);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + sign * 1.01f * Vector3.up * transform.GetComponent<Collider2D>().bounds.extents.y, sign*Vector2.up);
+            RaycastHit2D hit = Physics2D.Raycast((transform.position+ new Vector3(collider.offset.x, collider.offset.y, 0.0f)) + sign * 1.01f * Vector3.up * collider.bounds.extents.y, sign*Vector2.up);
             if (hit.transform == null || hit.distance > LaneActor.LANEHEIGHT)
             {
                 this.Lane += (int)Mathf.Sign(player.Lane - this.Lane);

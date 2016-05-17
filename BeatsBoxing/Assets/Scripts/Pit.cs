@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
-public class Spikes : Enemy {
+public class Pit : Enemy {
 
     public override void Start()
     {
@@ -18,6 +17,7 @@ public class Spikes : Enemy {
         _currentLane = 0;
         Lane = _currentLane;
         currentState = State.Moving;
+        nextStateOnBeat = State.Moving;
     }
 
     // Update is called once per frame
@@ -33,6 +33,6 @@ public class Spikes : Enemy {
 
     protected override void AttackActive()
     {
-        currentState = State.Moving;
+        throw new System.NotImplementedException();
     }
 }

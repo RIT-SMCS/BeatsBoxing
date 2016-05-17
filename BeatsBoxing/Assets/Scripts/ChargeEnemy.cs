@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
-public class TrackingEnemy : Enemy {
+public class ChargeEnemy : Enemy {
 
     private int attackRange;
 
@@ -12,7 +11,8 @@ public class TrackingEnemy : Enemy {
     }
 
     // Use this for initialization
-    public override void Awake(){
+    public override void Awake()
+    {
         base.Awake();
         _health = 1;
         _xVelocity = -1.0f;
@@ -25,9 +25,10 @@ public class TrackingEnemy : Enemy {
         minimumDistance = 3.2f;
         minimumEnemyFollowDistance = 1.0f;
     }
-	
-	// Update is called once per frame
-	public override void Update () {
+
+    // Update is called once per frame
+    public override void Update()
+    {
         base.Update();
         /*
         if(currentState == State.Tracking)
@@ -57,19 +58,16 @@ public class TrackingEnemy : Enemy {
 
         base.Update();
         */
-	}
+    }
 
     public override void DoAttackPattern()
-    {   
-        base.DoAttackPattern();        
+    {
+        base.DoAttackPattern();
     }
-    /// <summary>
-    /// TODO throw a ninja star
-    /// </summary>
+    
     protected override void AttackActive()
     {
-        ShootBullet();
-        currentState = State.Idle;
-        nextStateOnBeat = State.Tracking;
+        _xVelocity = -7.0f;
+        this.transform.position += _movementScale * new Vector3(_xVelocity, 0.0f, 0.0f) * Time.deltaTime;        
     }
 }

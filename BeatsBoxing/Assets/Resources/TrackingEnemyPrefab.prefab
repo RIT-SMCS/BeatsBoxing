@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 402966}
   - 212: {fileID: 21252004}
-  - 58: {fileID: 5834254}
   - 114: {fileID: 11469792}
   - 50: {fileID: 5091598}
+  - 61: {fileID: 6194858}
   m_Layer: 0
   m_Name: TrackingEnemyPrefab
   m_TagString: Enemy
@@ -47,8 +47,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5834254
-CircleCollider2D:
+--- !u!61 &6194858
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -57,9 +57,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -.119999997, y: 0}
   serializedVersion: 2
-  m_Radius: .100000001
+  m_Size: {x: .769999981, y: .670000017}
 --- !u!114 &11469792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b6e025ed95dde418f2a60f37289c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseScale: {x: 0, y: 0, z: 0}
+  currentState: 0
 --- !u!212 &21252004
 SpriteRenderer:
   m_ObjectHideFlags: 1

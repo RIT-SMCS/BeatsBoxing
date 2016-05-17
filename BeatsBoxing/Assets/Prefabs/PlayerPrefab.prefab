@@ -101,9 +101,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -.0250000004}
   serializedVersion: 2
-  m_Radius: .100000001
+  m_Radius: .0599999987
 --- !u!61 &6181530
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -116,7 +116,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: .00999999978, y: 0}
   serializedVersion: 2
-  m_Size: {x: .239999995, y: .25}
+  m_Size: {x: .239999995, y: .159999996}
 --- !u!82 &8276196
 AudioSource:
   m_ObjectHideFlags: 1
@@ -210,6 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34c8740322ba134089749143ea46155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentLane: 0
+  baseScale: {x: 0, y: 0, z: 0}
   punch: {fileID: 8300000, guid: 686ed9dee86eef84fa369630f959b92c, type: 3}
   switchLane: {fileID: 8300000, guid: 09ef70c02b904104b93f29b820152dc2, type: 3}
   takeDamage: {fileID: 8300000, guid: 638532d4f26c6e845962868a32fe302a, type: 3}
@@ -316,6 +318,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 67d41264a83b01646a45246b80d619d3,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: -.0250000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: .0599999987
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128676}

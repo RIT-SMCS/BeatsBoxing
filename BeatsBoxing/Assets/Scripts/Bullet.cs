@@ -49,7 +49,6 @@ public class Bullet : MonoBehaviour {
         }
         if (col.gameObject.tag == "Enemy" && isReflected == true)
         {
-            Debug.Log("Bullet hit Enemy");
             col.gameObject.GetComponent<Enemy>().Health -= 1;
             Destroy(this.gameObject);
         }
