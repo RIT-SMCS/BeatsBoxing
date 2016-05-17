@@ -49,7 +49,7 @@ public abstract class Enemy : LaneActor {
     {
         eTable = new EnemyTable();        
         eTable.Add("BasicEnemyPrefab", 4.0f);
-        eTable.Add("TrackingEnemyPrefab", 3.0f);
+        eTable.Add("ChargingEnemyPrefab", 3.0f);
         eTable.Add("TurretEnemyPrefab", 2.0f);
         eTable.Add("SpikesPrefab", 1.0f);
         eTable.Add("PitPrefab", 1.0f);
