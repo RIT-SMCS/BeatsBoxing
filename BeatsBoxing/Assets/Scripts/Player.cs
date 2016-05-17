@@ -17,7 +17,10 @@ public class Player : LaneActor
 
 	public Sprite animation1;
 	public Sprite animation2; 
-	public Sprite attackAnimation; 
+	public Sprite attackAnimation;
+
+    public Animator animator;
+
 	public float animationTimer;
 	bool animationState; 
 	//Lower this number to increase the speed of the walk animation
