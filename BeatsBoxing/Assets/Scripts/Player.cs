@@ -54,7 +54,7 @@ public class Player : LaneActor
 
     public override void Update()
     {
-        animator.speed = ANIMATIONSPEED;
+        animator.SetFloat("RunSpeedMultiplier", Mathf.Clamp(0.1f*ScoreManager.SpeedScale, 0.4f, 5.0f));
 
         //PLAYER CONTROL HANDLING
 		if (Input.GetKeyDown(KeyCode.W) && !knockingBack && !switchingLanes)
