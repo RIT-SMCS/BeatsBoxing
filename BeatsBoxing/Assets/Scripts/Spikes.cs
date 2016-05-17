@@ -4,6 +4,11 @@ using System;
 
 public class Spikes : Enemy {
 
+    public override void Start()
+    {
+        base.Start();
+    }
+
     // Use this for initialization
     public override void Awake()
     {

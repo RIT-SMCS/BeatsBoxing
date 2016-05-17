@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour {
        
     public Lane LanePrefab;
     public GameObject LaneBarrierPrefab;
-    public Player _player;
-	public EnemyManager eManager;
+    public Player _player;	
     public GameObject TelegraphPrefab;
 
     [SerializeField] private float startDelay;
@@ -23,9 +22,10 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         lastSpawnTime = startDelay;
+        //EnemyManager.Awake();
 		//InvokeRepeating("SpawnEnemies", startDelay, spawnRate * ScoreManager.SpeedScale);
 		ScoreManager.Reset();
-        eManager.Reset();      
+        EnemyManager.Reset();      
 
         BeatManager.Instance.ExecuteOnBeat += SpawnEnemies;
 
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Debug.ClearDeveloperConsole();
+        EnemyManager.Update();
         if (Time.time >= lastSpawnTime + spawnRate / (0.9f * ScoreManager.SpeedScale)) 
         {
             lastSpawnTime = Time.time;
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour {
     {
         if (toSpawnOnBeat)
         {
-            eManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f, 6.0f)));
+            EnemyManager.MakeEnemy((int)Mathf.Floor(Random.Range(0.0f, 6.0f)));
             toSpawnOnBeat = false;
         }
     }

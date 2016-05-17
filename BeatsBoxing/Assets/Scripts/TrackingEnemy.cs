@@ -6,6 +6,11 @@ public class TrackingEnemy : Enemy {
 
     private int attackRange;
 
+    public override void Start()
+    {
+        base.Start();
+    }
+
     // Use this for initialization
     public override void Awake(){
         base.Awake();

@@ -32,7 +32,7 @@ public class Attack : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other)
 	{
         //Debug.Log("Stay called "+asdf++);
-		if (attacking && other.gameObject.CompareTag("Enemy")) 
+		if (attacking && other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Charger")) 
 		{
             //deal damage if attacking a valid enemy
             //other.gameObject.GetComponent<LaneActor>().Health = other.gameObject.GetComponent<LaneActor>().Health - 2; 
@@ -42,11 +42,14 @@ public class Attack : MonoBehaviour {
 			ScoreManager.Combo += 1;
             //GetComponentInParent<Player>();
 			//Debug.Log("ENEMY HIT"); 
+			this.transform.parent.GetComponent<Player>().missTimer = 0; 
 		}
         if (attacking && other.gameObject.CompareTag("Bullet") && other.gameObject.GetComponent<Bullet>().IsReflected == false)
         {
             other.gameObject.GetComponent<Bullet>().Velocity *= -1;
-            other.gameObject.GetComponent<Bullet>().IsReflected = true;           
+            other.gameObject.GetComponent<Bullet>().IsReflected = true;
+			this.transform.parent.GetComponent<Player>().missTimer = 0; 
+			ScoreManager.Combo += 1;
         }
     }    
 }
