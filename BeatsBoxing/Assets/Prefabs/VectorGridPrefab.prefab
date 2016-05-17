@@ -194,7 +194,7 @@ MonoBehaviour:
   ScrollFactor: .25
   topPlane: {fileID: 180654}
   botPlane: {fileID: 146164}
-  duration: 2
+  duration: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

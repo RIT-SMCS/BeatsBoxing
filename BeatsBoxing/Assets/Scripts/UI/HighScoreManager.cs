@@ -25,7 +25,8 @@ public class HighScoreManager : MonoBehaviour {
 			score3 = 0; 
 
 		//get the player's score
-		int playerScore = (int)ScoreManager.Score; 
+		int playerScore = (int)ScoreManager.Score;
+        ScoreManager.Reset();
 
 		//test to see if it's high score material and set the scores
 		if (playerScore > score1) 

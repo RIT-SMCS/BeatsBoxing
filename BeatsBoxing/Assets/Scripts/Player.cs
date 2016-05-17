@@ -153,7 +153,6 @@ public class Player : LaneActor
             this.Health -= damage;
 
             if (this.Health == 0) {
-                ScoreManager.Reset();
                 Application.LoadLevel(Application.levelCount - 1);
             }
 
