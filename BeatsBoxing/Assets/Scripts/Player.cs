@@ -52,7 +52,7 @@ public class Player : LaneActor
 
 		missTimer = 0;
 
-		//coneColor = this.transform.Find ("EmptyCone/Player").gameObject.SpriteRenderer.color; 
+		coneColor = this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().color; 
     }
 
     public override void Update()
@@ -90,6 +90,8 @@ public class Player : LaneActor
 
 		if (missTimer > 0)
 			missTimer --;
+		else
+			this.gameObject.transform.GetChild (1).GetComponent<SpriteRenderer>().color = coneColor; 
 
         if (knockingBack)
         {
@@ -124,6 +126,7 @@ public class Player : LaneActor
         if (!knockingBack && missTimer <= 0)
         {
             this.gameObject.transform.GetChild(0).GetComponent<Attack>().attacking = true;
+			this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().color = new Color(255,0,0); 
             attackTimer = AttackDuration; 
             source.PlayOneShot (punch, audioVol); 
 			this.gameObject.GetComponent<SpriteRenderer>().sprite = attackAnimation; 

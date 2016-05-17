@@ -23,8 +23,8 @@ public class MusicManager : MonoBehaviour {
 		source.clip = startMusic; 
 		//source.PlayOneShot (startMusic, musicVol); 
 		source.Play (); 
-		scoreBarrier1 = 5.0f; 
-		scoreBarrier2 = 10.0f; 
+		scoreBarrier1 = 40.0f; 
+		scoreBarrier2 = 100.0f; 
 		switch1 = true; 
 		switch2 = true; 
 	}
@@ -35,6 +35,7 @@ public class MusicManager : MonoBehaviour {
 		{
 			source.Pause();
 			int time = source.timeSamples; 
+			time = RoundTime(time); 
 			//source.PlayOneShot(musicPhase2, musicVol);
 			source.clip = startMusic; 
 			source.timeSamples = time; 
@@ -46,6 +47,7 @@ public class MusicManager : MonoBehaviour {
 		{
 			source.Pause();
 			int time = source.timeSamples; 
+			time = RoundTime(time); 
 			//source.PlayOneShot(musicPhase2, musicVol);
 			source.clip = musicPhase3; 
 			source.timeSamples = time; 
@@ -59,6 +61,7 @@ public class MusicManager : MonoBehaviour {
 		{
 			source.Pause();
 			int time = source.timeSamples; 
+			time = RoundTime(time); 
 			//source.PlayOneShot(musicPhase2, musicVol);
 			source.clip = musicPhase2; 
 			source.timeSamples = time; 
@@ -68,5 +71,21 @@ public class MusicManager : MonoBehaviour {
 			
 			switch1 = false; 
 		}
+	}
+
+	/// <summary>
+	/// Makes sure the alloted timesample is within range
+	/// for the clip; this allows switching between different-length tracks
+	/// </summary>
+	/// <param name="time">Time.</param>
+	int RoundTime(int time)
+	{
+		int samples = time; 
+		int maxSamples = source.clip.samples; 
+		while (samples > maxSamples) 
+		{
+			samples -= maxSamples; 
+		}
+		return samples; 
 	}
 }

@@ -49,6 +49,7 @@ public class Attack : MonoBehaviour {
             other.gameObject.GetComponent<Bullet>().Velocity *= -1;
             other.gameObject.GetComponent<Bullet>().IsReflected = true;
 			this.transform.parent.GetComponent<Player>().missTimer = 0; 
+			ScoreManager.Combo += 1;
         }
     }    
 }
