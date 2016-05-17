@@ -23,10 +23,12 @@ public class MusicManager : MonoBehaviour {
 		source.clip = startMusic; 
 		//source.PlayOneShot (startMusic, musicVol); 
 		source.Play (); 
-		scoreBarrier1 = 40.0f; 
-		scoreBarrier2 = 100.0f; 
+		scoreBarrier1 = 4.0f; 
+		scoreBarrier2 = 9.0f; 
 		switch1 = true; 
 		switch2 = true; 
+
+		//source.pitch = 1.2f; 
 	}
 	
 	// Update is called once per frame
@@ -56,6 +58,7 @@ public class MusicManager : MonoBehaviour {
 			//source.Play(); 
 			
 			switch2 = false; 
+			switch1 = false;
 		}
 		else if(ScoreManager.Combo > scoreBarrier1 && switch1)
 		{

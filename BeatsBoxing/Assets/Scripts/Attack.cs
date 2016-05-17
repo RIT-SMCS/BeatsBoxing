@@ -32,7 +32,7 @@ public class Attack : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other)
 	{
         //Debug.Log("Stay called "+asdf++);
-		if (attacking && other.gameObject.CompareTag("Enemy")) 
+		if (attacking && other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Charger")) 
 		{
             //deal damage if attacking a valid enemy
             //other.gameObject.GetComponent<LaneActor>().Health = other.gameObject.GetComponent<LaneActor>().Health - 2; 
