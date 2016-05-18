@@ -30,6 +30,8 @@ public class MainMenuButtons : MonoBehaviour {
             instructionsPanel.transform.SetParent(this.transform);
             instructionsPanel.GetComponent<RectTransform>().offsetMax = Vector2.zero;
             instructionsPanel.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+            instructionsPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0.25f, 0.25f);
+            instructionsPanel.GetComponent<RectTransform>().offsetMin = new Vector2(0.75f, 0.75f);
             instructionsPanel.name = "InstructionsPanel";
             Button menuBtn = instructionsPanel.transform.FindChild("Text").transform.FindChild("CloseButton").GetComponent<Button>() as Button;
             menuBtn.onClick.AddListener(delegate () { CloseMenu(); });
