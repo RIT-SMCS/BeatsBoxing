@@ -45,4 +45,4 @@ Matt improved our enemy spawning algorithm and worked on behind-the-scenes enemy
 Chris worked on creating the beat system that allowed for global synching of events on a given beat. Spawning and attacking now follows the beats of the song and follow the game as it speeds up. He also improved the core enemy AI system making enemy creation easier, and implemented a 2D inverse-kinematic animation system for the player character.
 Sarah worked on the music itself as well as better controls for the player. She spliced, mixed, remixed, added, layered, and implemented all audio in the game. She also implemented a high score system and integrated Unity Ads for mobile platforms. 
 
-![Image of Game](screenshot.png "BeatsBoxing")
+![Image of Game](screenshot.jpg "BeatsBoxing")
