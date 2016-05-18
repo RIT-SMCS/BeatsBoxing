@@ -13,13 +13,16 @@ The project was done for IGM-590, Casual Game Development at RIT in 5 weeks, by 
 * Engine Architect
 * Taskmaster
 * Game Designer
+* AI Engineer
+* Animation
 
 
 ## Sarah Bishop
 * Artist
 * Player Input and Programming
 * Game Designer
-* Sound Engineer
+* Sound Wizard
+* Monetization
 
 
 ## Matthew Fobare
@@ -30,3 +33,4 @@ The project was done for IGM-590, Casual Game Development at RIT in 5 weeks, by 
 * UI Designer & Engineer
 * Mobile Build Lead
 * Game Designer
+* Artist
